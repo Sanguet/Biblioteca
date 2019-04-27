@@ -37,6 +37,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bt_salir = new javax.swing.JButton();
         bt_abrirVentana = new javax.swing.JButton();
         bt_cerrarVentana = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         mb_principal = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -67,6 +68,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 bt_cerrarVentanaActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Borrar");
 
         jMenu1.setText("File");
         mb_principal.add(jMenu1);
@@ -103,11 +106,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(bt_abrirVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_cerrarVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(111, 111, 111))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bt_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,6 +199,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bt_abrirVentana;
     private javax.swing.JButton bt_cerrarVentana;
     private javax.swing.JButton bt_salir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem2;
