@@ -1,7 +1,7 @@
 package bibliotecaclon1;
 import java.sql.*;
 import java.util.*;
-import vistas.VentanaPrincipal;
+import Vistas.VentanaPrincipal;
 
 public class Biblioteca {
 
