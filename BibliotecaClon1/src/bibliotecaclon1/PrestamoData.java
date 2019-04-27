@@ -2,7 +2,6 @@ package bibliotecaclon1;
 
 import java.sql.*;
 import java.util.*;
-import java.sql.Date;
 
 public class PrestamoData {
     private Connection connection = null;
@@ -21,15 +20,15 @@ public class PrestamoData {
             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, prestamo.getIdAlumno());
             stmt.setInt(2,prestamo.getIdLibro());
-            stmt.setDate(3,Date.valueOf(prestamo.getFechaPrestamo()));
+            stmt.setDate(3,prestamo.getFechaPrestamo());
+            stmt.setDate(4,prestamo.getFechaDevolucion());
             
             stmt.executeUpdate();
             
             ResultSet rs = stmt.getGeneratedKeys();
             
             if(rs.next()){
-                prestamo.setIdAlumno(rs.getInt(1));
-                prestamo.setIdLibro(rs.getInt(2));
+                prestamo.setId(rs.getInt(1));
             } else {
                 System.out.println("No se pudo obtener el id luego de insertar un ");
             }
@@ -39,6 +38,8 @@ public class PrestamoData {
             System.out.println("Error al insertar un prestamo" + ex.getMessage());
         }
         
+        
+        //A partir de esto no pobre las cosas no borren nada :v
         
     }
     public void borrarPrestamo(Prestamo prestamo){
@@ -58,99 +59,106 @@ public class PrestamoData {
     
     }
     
-    public Alumno getAlumnoByMail(String mail){
+    public Prestamo getPrestamosByIdAlumno(Alumno alumno){
         Prestamo a = null;
         try{
-            String sql = "SELECT * FROM alumnos WHERE email = ?";
+            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idAlumno = ? ";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, mail);
+            stmt.setInt(1, alumno.getId());
             
             ResultSet rs = stmt.executeQuery();
             
             rs.next();
-            a = new Alumno(rs.getInt(1),rs.getString(2),rs.getString(3));
+            a = new Prestamo(rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getDate(4));
             
             stmt.close();
         }
         catch(SQLException ex){
-            System.out.println("Error al borrar un alumno" + ex.getMessage());
+            System.out.println("Error al borrar un prestamo" + ex.getMessage());
         }
         return a;
     }
     
-    //Devuelve un array con todos los alumnos de la base de datos
-    public List <Alumno> obtenerAlumnos(){
-        List <Alumno> alumnos = new ArrayList<Alumno>();
+    //Devuelve un array con todos los prestamos de la base de datos
+    public List <Prestamo> obtenerPrestamos(){
+        List <Prestamo> prestamos = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT * FROM alumnos;";
+            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id";
+            
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            Alumno alumno;
+            Prestamo prestamo;
             while (rs.next()){
-                alumno = new Alumno();
-                alumno.setId(rs.getInt("id"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setEmail(rs.getString("email"));
+                prestamo = new Prestamo();
+                prestamo.setIdAlumno(rs.getInt("idAlumno"));
+                prestamo.setIdLibro(rs.getInt("idLibro"));
+                prestamo.setFechaPrestamo(rs.getDate("FechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("FechaDevolucion"));
                 
-                alumnos.add(alumno);
+                prestamos.add(prestamo);
             }
             stmt.close();
         } catch(SQLException ex){
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            System.out.println("Error al obtener los prestamos: " + ex.getMessage());
         }
-        return alumnos;
+        return prestamos;
     } 
     
-    //Devuelve un array con los alumnos que tengan un nombre similar al especificado
-    public List <Alumno> obtenerAlumnosByName(String nombre){
-        List <Alumno> alumnosNombre = new ArrayList<Alumno>();
+    //Devuelve un array con los prestamos que tengan un alumno similar al especificado
+    public List <Prestamo> obtenerPresatamosByAlumnos(Alumno alumno){
+        List <Prestamo> prestamosDeAlumno = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT * FROM alumnos WHERE alumnos.nombre LIKE ?;";
+            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idAlumno = ? ";
+            
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, nombre);
+            stmt.setInt(1, alumno.getId());
+            
             ResultSet rs = stmt.executeQuery();
-            Alumno alumno;
+            Prestamo prestamo;
             while (rs.next()){
-                alumno = new Alumno();
-                alumno.setId(rs.getInt("id"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setEmail(rs.getString("email"));
+                prestamo = new Prestamo();
+                prestamo.setIdAlumno(rs.getInt("idAlumno"));
+                prestamo.setIdLibro(rs.getInt("idLibro"));
+                prestamo.setFechaPrestamo(rs.getDate("FechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("FechaDevolucion"));
                 
-                alumnosNombre.add(alumno);
+                prestamosDeAlumno.add(prestamo);
             }
             stmt.close();
         } catch(SQLException ex){
             System.out.println("Error al obtener los alumnos: " + ex.getMessage());
         }
-        return alumnosNombre;
+        return prestamosDeAlumno;
     } 
     
-    //Devuelve un array con los alumnos que tengan un email similar al especificado
-    public List <Alumno> obtenerAlumnosByEmail(String email){
-    List <Alumno> alumnosEmail = new ArrayList<Alumno>();
+    //Devuelve un array con los prestamos que tengan un libro similar al especificado
+    public List <Prestamo> obtenerPrestamosByLibro(Libro libro){
+    List <Prestamo> prestamosDelLibro = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT * FROM alumnos WHERE alumnos.email LIKE ?;";
+            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idLibro = ? ";
+            
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, email);
+            stmt.setInt(1, libro.getId());
             ResultSet rs = stmt.executeQuery();
-            Alumno alumno;
+            Prestamo prestamo;
             while (rs.next()){
-                alumno = new Alumno();
-                alumno.setId(rs.getInt("id"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setEmail(rs.getString("email"));
+                prestamo = new Prestamo();
+                prestamo.setIdAlumno(rs.getInt("idAlumno"));
+                prestamo.setIdLibro(rs.getInt("idLibro"));
+                prestamo.setFechaPrestamo(rs.getDate("FechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("FechaDevolucion"));
                 
-                alumnosEmail.add(alumno);
+                prestamosDelLibro.add(prestamo);
             }
             stmt.close();
         } catch(SQLException ex){
             System.out.println("Error al obtener los alumnos: " + ex.getMessage());
         }
-        return alumnosEmail;
+        return prestamosDelLibro;
     } 
     
 }

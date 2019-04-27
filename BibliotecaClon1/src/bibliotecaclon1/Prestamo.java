@@ -1,16 +1,18 @@
 package bibliotecaclon1;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 public class Prestamo {
     private int id = -1;
-    private int idAlumno = -1;
-    private int idLibro = -1;
-    private LocalDate fechaPrestamo;
-    private LocalDate fechaDevolucion;
+    private int idAlumno ;
+    private int idLibro ;
+    private Date fechaPrestamo;
+    private Date fechaDevolucion;
 
-    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
+    public Prestamo(int idAlumno, int idLibro, Date fechaPrestamo, Date fechaDevolucion) {
+        this.idAlumno = idAlumno;
+        this.idLibro = idLibro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
     }
@@ -19,7 +21,7 @@ public class Prestamo {
         this.idAlumno = -1;
         this.idLibro = -1;
     }
-    
+
     //Getters
 
     public int getId() {
@@ -34,11 +36,11 @@ public class Prestamo {
         return idLibro;
     }
 
-    public LocalDate getFechaPrestamo() {
+    public Date getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public LocalDate getFechaDevolucion() {
+    public Date getFechaDevolucion() {
         return fechaDevolucion;
     }
     
@@ -56,11 +58,11 @@ public class Prestamo {
         this.idLibro = idLibro;
     }
 
-    public void setFechaPrestamo(LocalDate fechaPrestamo) {
+    public void setFechaPrestamo(Date fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public void setFechaDevolucion(LocalDate fechaDevolucion) {
+    public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
     
