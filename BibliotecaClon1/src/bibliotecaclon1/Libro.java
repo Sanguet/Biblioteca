@@ -1,77 +1,83 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package bibliotecaclon1;
+package biblioteca;
 
-/**
- *
- * @author biane
- */
+import java.util.List;
+
 public class Libro {
     private int id;
     private String nombre;
+    private int cantidad;
     private String genero;
     private String autor;
-    private String cantidad;
 
-    public Libro(int id, String nombre, String genero, String autor, String cantidad) {
+    public Libro(int id, String nombre, int cantidad, String genero, String autor) {
         this.id = id;
         this.nombre = nombre;
+        this.cantidad = cantidad;
         this.genero = genero;
         this.autor = autor;
-        this.cantidad = cantidad;
     }
 
-    public Libro(String nombre, String genero, String autor, String cantidad) {
+    public Libro(String nombre, int cantidad, String genero, String autor) {
+        this.id = -1;
         this.nombre = nombre;
+        this.cantidad = cantidad;
         this.genero = genero;
         this.autor = autor;
-        this.cantidad = cantidad;
     }
 
     public Libro() {
         this.id = -1;
     }
+    
+    //Getters
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getCantidad() {
+        return cantidad;
     }
 
     public String getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
     public String getAutor() {
         return autor;
+    }
+    
+    //Setters
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public void setAutor(String autor) {
         this.autor = autor;
     }
-
-    public String getCantidad() {
-        return cantidad;
+    
+    public static void mostrarLibros(List<Libro> libros){
+        for (int i = 0; i < libros.size(); i++){
+                System.out.println("Nombre = " + libros.get(i).getNombre()+ " Cantidad = " + libros.get(i).getCantidad() + " Genero = " + libros.get(i).getGenero() + " Autor = " + libros.get(i).getAutor());
+            }
     }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
+    
+    
 }

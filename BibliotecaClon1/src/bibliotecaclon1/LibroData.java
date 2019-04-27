@@ -1,66 +1,212 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bibliotecaclon1;
+import java.sql.*;
+import java.util.*;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-/**
- *
- * @author biane
- */
 public class LibroData {
-private Connection connection = null;
-    
-    public LibroData(Conexion conexion) {
-        try {
+    private Connection connection = null;
+    public LibroData(Conexion conexion){
+        try{
             connection = conexion.getConexion();
-        } catch (SQLException ex) {
-            System.out.println("Error al abrir al obtener la conexión");
+        } catch (SQLException ex){
+            System.out.println("Error al abrr al obtener la conexion");
         }
     }
-    //id nombre genero autor cantidad
-    public void agregarLibro(Alumno alumno){
-        try {
-            String sql = "INSERT INTO libros (nombre, genero, autor, cantidad) VALUES (?,?,?,?)";
+    
+    public void guardarLibro(Libro libro){
+        try{
+            String sql = "INSERT INTO libros (nombre,cantidad,genero,autor) VALUES (?,?,?,?)";
             
-            PreparedStatement statement = connection.prepareStatement (sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString (1, libro.getNombre());
-            //statement.setDate(2, Date.valueOf(alumno.getFechaNac()));
-            statement.setString (2, libro.getGenero());
-            statement.setString (3, libro.getAutor());
-            statement.setString (4, libro.getCantidad());
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, libro.getNombre());
+            stmt.setInt(2,libro.getCantidad());
+            stmt.setString(3, libro.getGenero());
+            stmt.setString(4, libro.getAutor());
             
-            statement.executeUpdate();
+            stmt.executeUpdate();
             
-            ResultSet rs = statement.getGeneratedKeys();
+            ResultSet rs = stmt.getGeneratedKeys();
             
-            if (rs.next()){
+            if(rs.next()){
                 libro.setId(rs.getInt(1));
             } else {
-                 System.out.println("No se pudo obtener el id luego de insertar un nuevo libro");
+                System.out.println("No se pudo obtener el id luego de insertar un ");
             }
-        } catch(Exception e){
-            System.out.println("Error al instanciar la clase conexión: " + e.getMessage());
+            stmt.close();
         }
+        catch(SQLException ex){
+            System.out.println("Error al insertar un libro" + ex.getMessage());
+        }
+        
+        
     }
-    
-    public void borrarLibro(Libro a){
-        try {
+    public void borrarLibro(Libro libro){
+        try{
             String sql = "DELETE FROM libros WHERE id = ?";
             
-            PreparedStatement statement = connection.prepareStatement (sql);
-            statement.setInt(1, a.getId());
-                        
-            statement.executeUpdate();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, libro.getId());
             
-        } catch(Exception e){
-            System.out.println("Error al borrar el libro: " + e.getMessage());
+            stmt.executeUpdate();
+            
+            stmt.close();
         }
+        catch(SQLException ex){
+            System.out.println("Error al borrar un libro" + ex.getMessage());
+        }
+    
     }
+    
+    public Libro getLibrosByName(String nombre){
+        Libro a = null;
+        try{
+            String sql = "SELECT * FROM libros WHERE email = ?";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nombre);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            rs.next();
+            a = new Libro(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5));
+            
+            stmt.close();
+        }
+        catch(SQLException ex){
+            System.out.println("Error al borrar un alumno" + ex.getMessage());
+        }
+        return a;
+    }
+    
+    //Devuelve un array con todos los alumnos de la base de datos
+    public List <Libro> obtenerLibros(){
+        List <Libro> libros = new ArrayList<Libro>();
+        
+        try {
+            String sql = "SELECT * FROM libros;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            Libro libro;
+            while (rs.next()){
+                libro = new Libro();
+                libro.setId(rs.getInt("id"));
+                libro.setNombre(rs.getString("nombre"));
+                libro.setCantidad(rs.getInt("cantidad"));
+                libro.setGenero(rs.getString("genero"));
+                libro.setAutor(rs.getString("autor"));
+                
+                libros.add(libro);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return libros;
+    } 
+    
+    //Devuelve un array con los alumnos que tengan un nombre similar al especificado
+    public List <Libro> obtenerLibrosByNombre(String nombre){
+        List <Libro> librosNombre = new ArrayList<Libro>();
+        
+        try {
+            String sql = "SELECT * FROM alumnos WHERE libros.nombre LIKE ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nombre);
+            ResultSet rs = stmt.executeQuery();
+            Libro libro;
+            while (rs.next()){
+                libro = new Libro();
+                libro.setId(rs.getInt("id"));
+                libro.setNombre(rs.getString("nombre"));
+                libro.setCantidad(rs.getInt("cantidad"));
+                libro.setGenero(rs.getString("genero"));
+                libro.setAutor(rs.getString("autor"));
+                
+                librosNombre.add(libro);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return librosNombre;
+    } 
+    
+    public List <Libro> obtenerLibrosByAutor(String autor){
+        List <Libro> librosAutor = new ArrayList<Libro>();
+        
+        try {
+            String sql = "SELECT * FROM alumnos WHERE libros.autor LIKE ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, autor);
+            ResultSet rs = stmt.executeQuery();
+            Libro libro;
+            while (rs.next()){
+                libro = new Libro();
+                libro.setId(rs.getInt("id"));
+                libro.setNombre(rs.getString("nombre"));
+                libro.setCantidad(rs.getInt("cantidad"));
+                libro.setGenero(rs.getString("genero"));
+                libro.setAutor(rs.getString("autor"));
+                
+                librosAutor.add(libro);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
+        }
+        return librosAutor;
+    }
+    
+    
+    public List <Libro> obtenerLibrosByCantidad(int cantidad){
+        List <Libro> librosCantidad = new ArrayList<Libro>();
+        
+        try {
+            String sql = "SELECT * FROM alumnos WHERE libros.cantidad LIKE ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, cantidad);
+            ResultSet rs = stmt.executeQuery();
+            Libro libro;
+            while (rs.next()){
+                libro = new Libro();
+                libro.setId(rs.getInt("id"));
+                libro.setNombre(rs.getString("nombre"));
+                libro.setCantidad(rs.getInt("cantidad"));
+                libro.setGenero(rs.getString("genero"));
+                libro.setAutor(rs.getString("autor"));
+                
+                librosCantidad.add(libro);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
+        }
+        return librosCantidad;
+    }
+    
+    public List <Libro> obtenerLibrosByGenero(String genero){
+        List <Libro> librosGenero = new ArrayList<Libro>();
+        
+        try {
+            String sql = "SELECT * FROM alumnos WHERE libros.genero LIKE ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, genero);
+            ResultSet rs = stmt.executeQuery();
+            Libro libro;
+            while (rs.next()){
+                libro = new Libro();
+                libro.setId(rs.getInt("id"));
+                libro.setNombre(rs.getString("nombre"));
+                libro.setCantidad(rs.getInt("cantidad"));
+                libro.setGenero(rs.getString("genero"));
+                libro.setAutor(rs.getString("autor"));
+                
+                librosGenero.add(libro);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
+        }
+        return librosGenero;
+    } 
+    
 }
