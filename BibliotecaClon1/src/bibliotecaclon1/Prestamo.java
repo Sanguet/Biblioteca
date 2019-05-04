@@ -17,6 +17,16 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
+    public Prestamo(int id, int idAlumno, int idLibro, Date fechaPrestamo, Date fechaDevolucion) {
+        this.id = id;
+        this.idAlumno = idAlumno;
+        this.idLibro = idLibro;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+    }
+    
+    
+
     public Prestamo() {
         this.idAlumno = -1;
         this.idLibro = -1;
@@ -71,6 +81,15 @@ public class Prestamo {
                 System.out.println("Nombre = " + prestamo.get(i).getIdAlumno()+ " Libro = " + prestamo.get(i).getIdLibro() + " Pidio prestado el dia " + prestamo.get(i).getFechaPrestamo() + " Devolvio el dia " + prestamo.get(i).getFechaDevolucion());
         }
     }    
+    public static void mostrarPrestamosPlus(List<Prestamo> prestamo, Conexion con){
+        AlumnoData alumnoData = new AlumnoData(con);
+        LibroData libroData = new LibroData(con);
+        for (int i = 0; i < prestamo.size(); i++){
+            Alumno a = alumnoData.getAlumnoById(prestamo.get(i).getIdAlumno());
+            Libro l = libroData.getLibrosById(prestamo.get(i).getIdLibro());
+            System.out.println("Nombre = " + a.getNombre() + " Libro = " + l.getNombre() + " Pidio prestado el dia " + prestamo.get(i).getFechaPrestamo() + " Devolvio el dia " + prestamo.get(i).getFechaDevolucion());
+        }
+    }  
 }
     
     

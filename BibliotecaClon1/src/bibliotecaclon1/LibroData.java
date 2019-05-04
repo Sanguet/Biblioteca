@@ -72,7 +72,27 @@ public class LibroData {
             stmt.close();
         }
         catch(SQLException ex){
-            System.out.println("Error al borrar un alumno" + ex.getMessage());
+            System.out.println("Error al obtener un libro" + ex.getMessage());
+        }
+        return a;
+    }
+        public Libro getLibrosById(int id){
+        Libro a = null;
+        try{
+            String sql = "SELECT * FROM libros WHERE id = ?";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            rs.next();
+            a = new Libro(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5));
+            
+            stmt.close();
+        }
+        catch(SQLException ex){
+            System.out.println("Error al obtener un libro" + ex.getMessage());
         }
         return a;
     }
@@ -98,7 +118,7 @@ public class LibroData {
             }
             stmt.close();
         } catch(SQLException ex){
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
         }
         return libros;
     } 
@@ -125,7 +145,7 @@ public class LibroData {
             }
             stmt.close();
         } catch(SQLException ex){
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
         }
         return librosNombre;
     } 

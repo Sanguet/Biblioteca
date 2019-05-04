@@ -71,7 +71,28 @@ public class AlumnoData {
             stmt.close();
         }
         catch(SQLException ex){
-            System.out.println("Error al borrar un alumno" + ex.getMessage());
+            System.out.println("Error al obtener un alumno" + ex.getMessage());
+        }
+        return a;
+    }
+    
+    public Alumno getAlumnoById(int id){
+        Alumno a = null;
+        try{
+            String sql = "SELECT * FROM alumnos WHERE id = ?";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            rs.next();
+            a = new Alumno(rs.getInt(1),rs.getString(2),rs.getString(3));
+            
+            stmt.close();
+        }
+        catch(SQLException ex){
+            System.out.println("Error al obtener un alumno" + ex.getMessage());
         }
         return a;
     }

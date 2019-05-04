@@ -38,11 +38,8 @@ public class PrestamoData {
             System.out.println("Error al insertar un prestamo" + ex.getMessage());
         }
         
-        
-        //A partir de esto no pobre las cosas no borren nada :v
-        
     }
-    public void borrarPrestamo(Prestamo prestamo){
+    public void borrarPrestamo(Prestamo prestamo){ 
         try{
             String sql = "DELETE FROM prestamo WHERE id = ?";
             
@@ -58,7 +55,7 @@ public class PrestamoData {
         }
     
     }
-    
+    /* Dejo esto aca por las dudas de que lo necesite despues 
     public Prestamo getPrestamosByIdAlumno(Alumno alumno){
         Prestamo a = null;
         try{
@@ -79,23 +76,23 @@ public class PrestamoData {
         }
         return a;
     }
-    
+    */
     //Devuelve un array con todos los prestamos de la base de datos
     public List <Prestamo> obtenerPrestamos(){
         List <Prestamo> prestamos = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id";
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             Prestamo prestamo;
             while (rs.next()){
                 prestamo = new Prestamo();
-                prestamo.setIdAlumno(rs.getInt("idAlumno"));
-                prestamo.setIdLibro(rs.getInt("idLibro"));
-                prestamo.setFechaPrestamo(rs.getDate("FechaPrestamo"));
-                prestamo.setFechaDevolucion(rs.getDate("FechaDevolucion"));
+                prestamo.setIdAlumno(rs.getInt("alumno"));
+                prestamo.setIdLibro(rs.getInt("libro"));
+                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
                 
                 prestamos.add(prestamo);
             }
@@ -111,7 +108,7 @@ public class PrestamoData {
         List <Prestamo> prestamosDeAlumno = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idAlumno = ? ";
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idAlumno = ? ";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, alumno.getId());
@@ -120,10 +117,10 @@ public class PrestamoData {
             Prestamo prestamo;
             while (rs.next()){
                 prestamo = new Prestamo();
-                prestamo.setIdAlumno(rs.getInt("idAlumno"));
-                prestamo.setIdLibro(rs.getInt("idLibro"));
-                prestamo.setFechaPrestamo(rs.getDate("FechaPrestamo"));
-                prestamo.setFechaDevolucion(rs.getDate("FechaDevolucion"));
+                prestamo.setIdAlumno(rs.getInt("alumno"));
+                prestamo.setIdLibro(rs.getInt("libro"));
+                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
                 
                 prestamosDeAlumno.add(prestamo);
             }
@@ -139,7 +136,7 @@ public class PrestamoData {
     List <Prestamo> prestamosDelLibro = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT a.nombre, l.nombre, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idLibro = ? ";
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idLibro = ? ";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, libro.getId());
@@ -147,10 +144,10 @@ public class PrestamoData {
             Prestamo prestamo;
             while (rs.next()){
                 prestamo = new Prestamo();
-                prestamo.setIdAlumno(rs.getInt("idAlumno"));
-                prestamo.setIdLibro(rs.getInt("idLibro"));
-                prestamo.setFechaPrestamo(rs.getDate("FechaPrestamo"));
-                prestamo.setFechaDevolucion(rs.getDate("FechaDevolucion"));
+                prestamo.setIdAlumno(rs.getInt("alumno"));
+                prestamo.setIdLibro(rs.getInt("libro"));
+                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
                 
                 prestamosDelLibro.add(prestamo);
             }

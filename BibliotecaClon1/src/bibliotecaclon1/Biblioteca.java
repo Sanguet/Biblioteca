@@ -1,3 +1,4 @@
+//No borren ningun paquete por favor  
 package bibliotecaclon1;
 import java.sql.*;
 import java.util.*;
@@ -13,6 +14,7 @@ public class Biblioteca {
             
             AlumnoData alumnoData = new AlumnoData(con);
             PrestamoData prestamoData = new PrestamoData(con);
+            LibroData libroData = new LibroData(con);
              
             //String fec = "31-03-2016";
             //LocalDate date3 = LocalDate.parse("2018-10-30");
@@ -20,11 +22,9 @@ public class Biblioteca {
             //Alumno a = new Alumno("Juan Gomez","juangomez@gmail.com");
             //Alumno b = new Alumno("Pepito Escudero","pepitoescudero@gmail.com");
             
-            Prestamo a = new Prestamo(4,1,java.sql.Date.valueOf("2019-10-2"),java.sql.Date.valueOf("2018-10-24"));
-            
-            prestamoData.guardarPrestamo(a);
-            //List<Prestamo> prestamos = prestamoData.obtenerPrestamos();
-            //Prestamo.mostrarPrestamos(prestamos);
+            Libro l = libroData.getLibrosById(2);
+            List<Prestamo> prestamos = prestamoData.obtenerPrestamosByLibro(l);
+            Prestamo.mostrarPrestamosPlus(prestamos,con);
             
             con.close();
         }
