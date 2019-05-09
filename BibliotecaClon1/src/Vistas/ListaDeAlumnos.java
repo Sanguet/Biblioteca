@@ -37,93 +37,57 @@ public class ListaDeAlumnos extends javax.swing.JInternalFrame {
         tfInsGenero = new javax.swing.JTextField();
         tfInsAutor = new javax.swing.JTextField();
         jbAgregarLibro = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setText("Agregar Libro");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
 
+        jlNombreLibro.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jlNombreLibro.setText("Nombre del libro:");
+        getContentPane().add(jlNombreLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 50));
 
+        jlCantidad.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jlCantidad.setText("Cantidad:");
+        getContentPane().add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, -1));
 
+        jlGenero.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jlGenero.setText("Género:");
+        getContentPane().add(jlGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
+        jlAutor.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jlAutor.setText("Autor:");
+        getContentPane().add(jlAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
 
         tfInsNombreLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfInsNombreLibroActionPerformed(evt);
             }
         });
+        getContentPane().add(tfInsNombreLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 430, 30));
 
         tfInsCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfInsCantidadActionPerformed(evt);
             }
         });
+        getContentPane().add(tfInsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, 30));
+        getContentPane().add(tfInsGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 430, 30));
+        getContentPane().add(tfInsAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 430, 30));
 
+        jbAgregarLibro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jbAgregarLibro.setText("Agregar y cerrar");
         jbAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAgregarLibroActionPerformed(evt);
             }
         });
+        getContentPane().add(jbAgregarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, 220, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbAgregarLibro)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jlAutor)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfInsAutor))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jlGenero)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfInsGenero))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jlCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfInsCantidad))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jlNombreLibro)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfInsNombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlNombreLibro)
-                    .addComponent(tfInsNombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCantidad)
-                    .addComponent(tfInsCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlGenero)
-                    .addComponent(tfInsGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlAutor)
-                    .addComponent(tfInsAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbAgregarLibro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,6 +107,7 @@ public class ListaDeAlumnos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JButton jbAgregarLibro;
     private javax.swing.JLabel jlAutor;
     private javax.swing.JLabel jlCantidad;
