@@ -39,5 +39,3 @@ public class Biblioteca {
         vp.setVisible(true);
     }
 }
-
-A
