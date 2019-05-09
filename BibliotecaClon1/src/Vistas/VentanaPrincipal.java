@@ -23,6 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     FormularioCliente c;
     public VentanaPrincipal() {
         initComponents();
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**
@@ -34,24 +35,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bt_salir = new javax.swing.JButton();
-        bt_abrirVentana = new javax.swing.JButton();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         bt_cerrarVentana = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bt_abrirVentana = new javax.swing.JButton();
+        bt_salir = new javax.swing.JButton();
         mb_principal = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        m_clientes = new javax.swing.JMenu();
-        mi_agregarCliente = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnAlumnos = new javax.swing.JMenu();
+        mniListaAlumnos = new javax.swing.JMenuItem();
+        mnLibros = new javax.swing.JMenu();
+        mniListaLibros = new javax.swing.JMenuItem();
+        mnPrestamo = new javax.swing.JMenu();
+        mniListaPrestamo = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        bt_salir.setText("Salir");
-        bt_salir.setName("bt"); // NOI18N
-        bt_salir.addActionListener(new java.awt.event.ActionListener() {
+        bt_cerrarVentana.setText("Cerrar ventana");
+        bt_cerrarVentana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_salirActionPerformed(evt);
+                bt_cerrarVentanaActionPerformed(evt);
             }
         });
 
@@ -62,35 +70,81 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        bt_cerrarVentana.setText("Cerrar ventana");
-        bt_cerrarVentana.addActionListener(new java.awt.event.ActionListener() {
+        bt_salir.setText("Salir");
+        bt_salir.setName("bt"); // NOI18N
+        bt_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cerrarVentanaActionPerformed(evt);
+                bt_salirActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Borrar");
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(160, Short.MAX_VALUE)
+                .addComponent(bt_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(bt_abrirVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_cerrarVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(351, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(bt_cerrarVentana)
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(bt_abrirVentana)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(bt_salir)
+                        .addGap(61, 61, 61))))
+        );
+        jDesktopPane1.setLayer(bt_cerrarVentana, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(bt_abrirVentana, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(bt_salir, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jMenu1.setText("File");
-        mb_principal.add(jMenu1);
+        mnAlumnos.setText("Alumnos");
 
-        jMenu2.setText("Edit");
-        mb_principal.add(jMenu2);
-
-        m_clientes.setText("Clientes");
-
-        mi_agregarCliente.setText("AgregarAlumno");
-        mi_agregarCliente.addActionListener(new java.awt.event.ActionListener() {
+        mniListaAlumnos.setText("Lista de Alumnos");
+        mniListaAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mi_agregarClienteActionPerformed(evt);
+                mniListaAlumnosActionPerformed(evt);
             }
         });
-        m_clientes.add(mi_agregarCliente);
+        mnAlumnos.add(mniListaAlumnos);
 
-        jMenuItem2.setText("Listar");
-        m_clientes.add(jMenuItem2);
+        mb_principal.add(mnAlumnos);
 
-        mb_principal.add(m_clientes);
+        mnLibros.setText("Libros");
+
+        mniListaLibros.setText("Lista de Libros");
+        mniListaLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaLibrosActionPerformed(evt);
+            }
+        });
+        mnLibros.add(mniListaLibros);
+
+        mb_principal.add(mnLibros);
+
+        mnPrestamo.setText("Préstamo");
+
+        mniListaPrestamo.setText("Lista de Préstamo");
+        mniListaPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaPrestamoActionPerformed(evt);
+            }
+        });
+        mnPrestamo.add(mniListaPrestamo);
+
+        mb_principal.add(mnPrestamo);
 
         setJMenuBar(mb_principal);
 
@@ -98,34 +152,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bt_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_abrirVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_cerrarVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111))
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bt_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bt_abrirVentana)
-                        .addGap(57, 57, 57)))
-                .addComponent(bt_cerrarVentana)
-                .addGap(80, 80, 80))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -150,14 +187,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventana.dispose();
     }//GEN-LAST:event_bt_cerrarVentanaActionPerformed
 
-    private void mi_agregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_agregarClienteActionPerformed
+    private void mniListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAlumnosActionPerformed
         // TODO add your handling code here:
         c = new FormularioCliente();
         c.setSize(500,500);
         c.setVisible(true);
         c.moveToFront();
         this.add(c);
-    }//GEN-LAST:event_mi_agregarClienteActionPerformed
+    }//GEN-LAST:event_mniListaAlumnosActionPerformed
+
+    private void mniListaLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaLibrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniListaLibrosActionPerformed
+
+    private void mniListaPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaPrestamoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniListaPrestamoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,12 +244,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bt_abrirVentana;
     private javax.swing.JButton bt_cerrarVentana;
     private javax.swing.JButton bt_salir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenu m_clientes;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar mb_principal;
-    private javax.swing.JMenuItem mi_agregarCliente;
+    private javax.swing.JMenu mnAlumnos;
+    private javax.swing.JMenu mnLibros;
+    private javax.swing.JMenu mnPrestamo;
+    private javax.swing.JMenuItem mniListaAlumnos;
+    private javax.swing.JMenuItem mniListaLibros;
+    private javax.swing.JMenuItem mniListaPrestamo;
     // End of variables declaration//GEN-END:variables
 }
