@@ -23,9 +23,9 @@ public class Biblioteca {
             //Alumno a = new Alumno("Juan Gomez","juangomez@gmail.com");
             //Alumno b = new Alumno("Pepito Escudero","pepitoescudero@gmail.com");
             
-            Libro l = libroData.getLibrosById(2);
-            List<Prestamo> prestamos = prestamoData.obtenerPrestamosByLibro(l);
-            Prestamo.mostrarPrestamosPlus(prestamos,con);
+            //Libro l = libroData.getLibrosById(2);
+            //List<Prestamo> prestamos = prestamoData.obtenerPrestamosByLibro(l);
+            //Prestamo.mostrarPrestamosPlus(prestamos,con);
             
             con.close();
         }
@@ -39,4 +39,3 @@ public class Biblioteca {
         vp.setVisible(true);
     }
 }
-a

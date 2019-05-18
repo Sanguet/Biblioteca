@@ -9,7 +9,7 @@ public class AlumnoData {
         try{
             connection = conexion.getConexion();
         } catch (SQLException ex){
-            System.out.println("Error al abrr al obtener la conexion");
+            System.out.println("Error al obtener la conexion");
         }
     }
     
@@ -56,7 +56,7 @@ public class AlumnoData {
     }
     
     public Alumno getAlumnoByMail(String mail){
-        Alumno a = null;
+        Alumno a = new Alumno();
         try{
             String sql = "SELECT * FROM alumnos WHERE email = ?";
             
@@ -72,6 +72,27 @@ public class AlumnoData {
         }
         catch(SQLException ex){
             System.out.println("Error al obtener un alumno" + ex.getMessage());
+        }
+        return a;
+    }
+    public Alumno getAlumnoByName(String name){
+        Alumno a = null;
+        try{
+            String sql = "SELECT * FROM alumnos WHERE nombre = ?";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, name);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            rs.next();
+            a = new Alumno(rs.getInt(1),rs.getString(2),rs.getString(3));
+            
+            stmt.close();
+        }
+        catch(SQLException ex){
+            System.out.println("Error al obtener un alumno" + ex.getMessage());
+            a = new Alumno();
         }
         return a;
     }

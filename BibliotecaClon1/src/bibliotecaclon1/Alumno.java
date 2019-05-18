@@ -21,6 +21,8 @@ public class Alumno {
     
     public Alumno() {
         this.id = -1;
+        this.nombre = "";
+        this.email = "";
     }
     
     

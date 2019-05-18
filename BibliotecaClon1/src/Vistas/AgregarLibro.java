@@ -5,16 +5,23 @@
  */
 package Vistas;
 
+import bibliotecaclon1.Conexion;
+import bibliotecaclon1.Libro;
+import bibliotecaclon1.LibroData;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author biane
  */
-public class ListaDeAlumnos extends javax.swing.JInternalFrame {
+public class AgregarLibro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListaDeAlumnos
      */
-    public ListaDeAlumnos() {
+    public AgregarLibro() {
         initComponents();
     }
 
@@ -32,10 +39,10 @@ public class ListaDeAlumnos extends javax.swing.JInternalFrame {
         jlCantidad = new javax.swing.JLabel();
         jlGenero = new javax.swing.JLabel();
         jlAutor = new javax.swing.JLabel();
-        tfInsNombreLibro = new javax.swing.JTextField();
-        tfInsCantidad = new javax.swing.JTextField();
-        tfInsGenero = new javax.swing.JTextField();
-        tfInsAutor = new javax.swing.JTextField();
+        tfGenero = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfCantidad = new javax.swing.JTextField();
+        tfAutor = new javax.swing.JTextField();
         jbAgregarLibro = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -61,21 +68,21 @@ public class ListaDeAlumnos extends javax.swing.JInternalFrame {
         jlAutor.setText("Autor:");
         getContentPane().add(jlAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
 
-        tfInsNombreLibro.addActionListener(new java.awt.event.ActionListener() {
+        tfGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfInsNombreLibroActionPerformed(evt);
+                tfGeneroActionPerformed(evt);
             }
         });
-        getContentPane().add(tfInsNombreLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 430, 30));
+        getContentPane().add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 430, 30));
 
-        tfInsCantidad.addActionListener(new java.awt.event.ActionListener() {
+        tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfInsCantidadActionPerformed(evt);
+                tfNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(tfInsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, 30));
-        getContentPane().add(tfInsGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 430, 30));
-        getContentPane().add(tfInsAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 430, 30));
+        getContentPane().add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, 30));
+        getContentPane().add(tfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 430, 30));
+        getContentPane().add(tfAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 430, 30));
 
         jbAgregarLibro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jbAgregarLibro.setText("Agregar y cerrar");
@@ -92,16 +99,28 @@ public class ListaDeAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfInsNombreLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInsNombreLibroActionPerformed
+    private void tfGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfInsNombreLibroActionPerformed
+    }//GEN-LAST:event_tfGeneroActionPerformed
 
-    private void tfInsCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInsCantidadActionPerformed
+    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfInsCantidadActionPerformed
+    }//GEN-LAST:event_tfNombreActionPerformed
 
     private void jbAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarLibroActionPerformed
         // TODO add your handling code here:
+        Conexion con = null;
+        try {
+            con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            Libro libro = new Libro(tfNombre.getText(),Integer.parseInt(tfCantidad.getText()),tfGenero.getText(),tfAutor.getText());
+            LibroData a = new LibroData(con);
+            a.guardarLibro(libro);
+            
+            con.close();
+            } catch (Exception e){
+            System.out.println("Error al instanciar la clase conexion" + e.getMessage());
+        }
+        dispose();
     }//GEN-LAST:event_jbAgregarLibroActionPerformed
 
 
@@ -113,9 +132,9 @@ public class ListaDeAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCantidad;
     private javax.swing.JLabel jlGenero;
     private javax.swing.JLabel jlNombreLibro;
-    private javax.swing.JTextField tfInsAutor;
-    private javax.swing.JTextField tfInsCantidad;
-    private javax.swing.JTextField tfInsGenero;
-    private javax.swing.JTextField tfInsNombreLibro;
+    private javax.swing.JTextField tfAutor;
+    private javax.swing.JTextField tfCantidad;
+    private javax.swing.JTextField tfGenero;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

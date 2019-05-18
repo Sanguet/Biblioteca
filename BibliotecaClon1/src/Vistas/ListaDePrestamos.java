@@ -9,12 +9,12 @@ package Vistas;
  *
  * @author biane
  */
-public class ListaPrestamos extends javax.swing.JInternalFrame {
+public class ListaDePrestamos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListaPrestamos
      */
-    public ListaPrestamos() {
+    public ListaDePrestamos() {
         initComponents();
     }
 
@@ -51,6 +51,11 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btCerrar.setText("Cerrar");
+        btCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +86,10 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

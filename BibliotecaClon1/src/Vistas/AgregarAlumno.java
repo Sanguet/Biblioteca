@@ -5,6 +5,14 @@
  */
 package Vistas;
 
+import bibliotecaclon1.Alumno;
+import bibliotecaclon1.AlumnoData;
+import bibliotecaclon1.Conexion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author biane
@@ -17,7 +25,6 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
     public AgregarAlumno() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,16 +34,16 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfInsEmail = new javax.swing.JTextField();
+        tfEmail = new javax.swing.JTextField();
         jbAgregarAlumno = new javax.swing.JButton();
         jlAgregarAlumno = new javax.swing.JLabel();
         jlNombreAlumno = new javax.swing.JLabel();
         jlEmail = new javax.swing.JLabel();
-        tfInsNombreAlumno = new javax.swing.JTextField();
+        tfNombreAlumno = new javax.swing.JTextField();
 
-        tfInsEmail.addActionListener(new java.awt.event.ActionListener() {
+        tfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfInsEmailActionPerformed(evt);
+                tfEmailActionPerformed(evt);
             }
         });
 
@@ -53,9 +60,9 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
 
         jlEmail.setText("Email:");
 
-        tfInsNombreAlumno.addActionListener(new java.awt.event.ActionListener() {
+        tfNombreAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfInsNombreAlumnoActionPerformed(evt);
+                tfNombreAlumnoActionPerformed(evt);
             }
         });
 
@@ -64,22 +71,25 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(155, 155, 155)
-                            .addComponent(jlAgregarAlumno))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(15, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfInsEmail))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jlNombreAlumno)
-                                .addGap(18, 18, 18)
-                                .addComponent(tfInsNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jbAgregarAlumno, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(155, 155, 155)
+                                .addComponent(jlAgregarAlumno))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfEmail))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jlNombreAlumno)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbAgregarAlumno)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -90,11 +100,11 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreAlumno)
-                    .addComponent(tfInsNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEmail)
-                    .addComponent(tfInsEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbAgregarAlumno)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -103,17 +113,37 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfInsEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInsEmailActionPerformed
+    private void tfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfInsEmailActionPerformed
+    }//GEN-LAST:event_tfEmailActionPerformed
 
     private void jbAgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarAlumnoActionPerformed
-        // TODO add your handling code here:
+        
+        Conexion con = null;
+        try {
+            con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            if (tfNombreAlumno.getText().length() > 5 && tfEmail.getText().length() > 10 ){
+            Alumno alumno = new Alumno(tfNombreAlumno.getText(),tfEmail.getText());
+            AlumnoData a = new AlumnoData(con);
+            /*Alumno alumnoExistente = a.getAlumnoByMail(tfEmail.getText());
+            if (tfEmail.getText() == alumnoExistente.getEmail()){ //Al parecer todo el tiempo son diferentes
+                JOptionPane.showMessageDialog(null, "Este alumno ya existe");
+            } else {
+                a.guardarAlumno(alumno);
+                JOptionPane.showMessageDialog(null, "Felicidades el alumno se agrego correctamente");
+            } Esto es para la condicion del email, pero no lo termine*/
+            a.guardarAlumno(alumno);
+            }
+            con.close();
+        } catch (Exception e){
+            System.out.println("Error al instanciar la clase conexion" + e.getMessage());
+        }
+        dispose();
     }//GEN-LAST:event_jbAgregarAlumnoActionPerformed
 
-    private void tfInsNombreAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInsNombreAlumnoActionPerformed
+    private void tfNombreAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreAlumnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfInsNombreAlumnoActionPerformed
+    }//GEN-LAST:event_tfNombreAlumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -121,7 +151,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlAgregarAlumno;
     private javax.swing.JLabel jlEmail;
     private javax.swing.JLabel jlNombreAlumno;
-    private javax.swing.JTextField tfInsEmail;
-    private javax.swing.JTextField tfInsNombreAlumno;
+    private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfNombreAlumno;
     // End of variables declaration//GEN-END:variables
 }
