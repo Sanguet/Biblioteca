@@ -86,7 +86,7 @@ public class Prestamo {
         LibroData libroData = new LibroData(con);
         for (int i = 0; i < prestamo.size(); i++){
             Alumno a = alumnoData.getAlumnoById(prestamo.get(i).getIdAlumno());
-            Libro l = libroData.getLibrosById(prestamo.get(i).getIdLibro());
+            Libro l = libroData.getLibroById(prestamo.get(i).getIdLibro());
             System.out.println("Nombre = " + a.getNombre() + " Libro = " + l.getNombre() + " Pidio prestado el dia " + prestamo.get(i).getFechaPrestamo() + " Devolvio el dia " + prestamo.get(i).getFechaDevolucion());
         }
     }  

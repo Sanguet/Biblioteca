@@ -1,6 +1,7 @@
 package bibliotecaclon1;
 import java.sql.*;
 import java.util.*;
+import javax.swing.JComboBox;
 
 public class LibroData {
     private Connection connection = null;
@@ -56,10 +57,10 @@ public class LibroData {
     
     }
     
-    public Libro getLibrosByName(String nombre){
+    public Libro getLibroByName(String nombre){
         Libro a = null;
         try{
-            String sql = "SELECT * FROM libros WHERE email = ?";
+            String sql = "SELECT * FROM libros WHERE nombre = ?";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, nombre);
@@ -76,7 +77,7 @@ public class LibroData {
         }
         return a;
     }
-        public Libro getLibrosById(int id){
+        public Libro getLibroById(int id){
         Libro a = null;
         try{
             String sql = "SELECT * FROM libros WHERE id = ?";
@@ -228,5 +229,22 @@ public class LibroData {
         }
         return librosGenero;
     } 
+    
+    public static void listarLibros(JComboBox<String> cbx){
+        Conexion con = null;
+        try {
+            con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+                LibroData a = new LibroData(con); 
+                
+                List<Libro> libros = a.obtenerLibros();
+                for (int i = 0; i < libros.size(); i++){
+                cbx.addItem(libros.get(i).getNombre());
+                }
+                con.close();
+            }
+         catch (Exception e){
+            System.out.println("Error de " + e.getMessage());
+        }
+    }
     
 }

@@ -40,7 +40,15 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         jlNombreAlumno = new javax.swing.JLabel();
         jlEmail = new javax.swing.JLabel();
         tfNombreAlumno = new javax.swing.JTextField();
+        jlRestriccionNombre = new javax.swing.JLabel();
+        jlRestriccionEmail = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
+        tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfEmailFocusLost(evt);
+            }
+        });
         tfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfEmailActionPerformed(evt);
@@ -60,9 +68,32 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
 
         jlEmail.setText("Email:");
 
+        tfNombreAlumno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreAlumnoFocusLost(evt);
+            }
+        });
         tfNombreAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfNombreAlumnoActionPerformed(evt);
+            }
+        });
+        tfNombreAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNombreAlumnoKeyTyped(evt);
+            }
+        });
+
+        jlRestriccionNombre.setVisible(false);
+        jlRestriccionNombre.setText("Es necesario rellenar este campo");
+
+        jlRestriccionEmail.setVisible(false);
+        jlRestriccionEmail.setText("Es necesario rellenar este campo");
+
+        jButton1.setText("Cerar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -71,24 +102,28 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(15, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(155, 155, 155)
+                            .addComponent(jlAgregarAlumno))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jlNombreAlumno)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlRestriccionNombre)
+                                    .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jlAgregarAlumno))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tfEmail))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jlNombreAlumno)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlRestriccionEmail)
+                                    .addComponent(tfEmail)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbAgregarAlumno)))
                 .addContainerGap())
         );
@@ -101,13 +136,19 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreAlumno)
                     .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(3, 3, 3)
+                .addComponent(jlRestriccionNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEmail)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jbAgregarAlumno)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jlRestriccionEmail)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAgregarAlumno)
+                    .addComponent(jButton1))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -122,35 +163,71 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         Conexion con = null;
         try {
             con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-            if (tfNombreAlumno.getText().length() > 5 && tfEmail.getText().length() > 10 ){
-            Alumno alumno = new Alumno(tfNombreAlumno.getText(),tfEmail.getText());
-            AlumnoData a = new AlumnoData(con);
-            /*Alumno alumnoExistente = a.getAlumnoByMail(tfEmail.getText());
-            if (tfEmail.getText() == alumnoExistente.getEmail()){ //Al parecer todo el tiempo son diferentes
-                JOptionPane.showMessageDialog(null, "Este alumno ya existe");
-            } else {
+            if ((tfNombreAlumno.getText().length() < 30 && tfNombreAlumno.getText().length() > 0)&& (tfEmail.getText().length() < 50 && tfEmail.getText().length() > 0) ){
+                Alumno alumno = new Alumno(tfNombreAlumno.getText(),tfEmail.getText());
+                AlumnoData a = new AlumnoData(con); 
+                /*Alumno alumnoExistente = a.getAlumnoByMail(tfEmail.getText());
+                if (tfEmail.getText() == alumnoExistente.getEmail()){ //Al parecer todo el tiempo son diferentes
+                    JOptionPane.showMessageDialog(null, "Este alumno ya existe");
+                } else {
+                    a.guardarAlumno(alumno);
+                    JOptionPane.showMessageDialog(null, "Felicidades el alumno se agrego correctamente");
+                } Esto es para la condicion del email, pero no lo termine*/
                 a.guardarAlumno(alumno);
                 JOptionPane.showMessageDialog(null, "Felicidades el alumno se agrego correctamente");
-            } Esto es para la condicion del email, pero no lo termine*/
-            a.guardarAlumno(alumno);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el alumno, el nombre es demasido largo o el alumno ya existe");
+                tfNombreAlumno.setText(null);
+                tfEmail.setText(null);
             }
             con.close();
         } catch (Exception e){
             System.out.println("Error al instanciar la clase conexion" + e.getMessage());
         }
-        dispose();
     }//GEN-LAST:event_jbAgregarAlumnoActionPerformed
 
     private void tfNombreAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreAlumnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreAlumnoActionPerformed
 
+    private void tfNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreAlumnoKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c == Character.SPACE_SEPARATOR)){
+            evt.consume();
+            jlRestriccionNombre.setVisible(true);
+        }
+    }//GEN-LAST:event_tfNombreAlumnoKeyTyped
+
+    private void tfNombreAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreAlumnoFocusLost
+        if (tfNombreAlumno.getText().length() == 0){
+            jlRestriccionNombre.setVisible(true);
+        } else {
+            jlRestriccionNombre.setVisible(false);
+        }
+    }//GEN-LAST:event_tfNombreAlumnoFocusLost
+
+    private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
+        if (tfEmail.getText().length() == 0){
+            jlRestriccionEmail.setVisible(true);
+        } else {
+            jlRestriccionEmail.setVisible(false);
+        }
+    }//GEN-LAST:event_tfEmailFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jbAgregarAlumno;
     private javax.swing.JLabel jlAgregarAlumno;
     private javax.swing.JLabel jlEmail;
     private javax.swing.JLabel jlNombreAlumno;
+    private javax.swing.JLabel jlRestriccionEmail;
+    private javax.swing.JLabel jlRestriccionNombre;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfNombreAlumno;
     // End of variables declaration//GEN-END:variables

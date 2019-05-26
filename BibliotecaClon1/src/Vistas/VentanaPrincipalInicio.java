@@ -31,6 +31,9 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         Escritorio = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        JBSalir = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -39,6 +42,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -48,15 +52,53 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
 
         Escritorio.setOpaque(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 102, 255));
+
+        jLabel3.setText("X");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        JBSalir.setBackground(new java.awt.Color(204, 102, 255));
+        JBSalir.setForeground(new java.awt.Color(204, 102, 255));
+        JBSalir.setToolTipText("");
+        JBSalir.setOpaque(false);
+        JBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBSalirActionPerformed(evt);
+            }
+        });
+
+        Escritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(JBSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                .addGap(0, 870, Short.MAX_VALUE)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 570, Short.MAX_VALUE))
         );
 
         getContentPane().add(Escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
@@ -71,7 +113,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem2.setText("Lista de Libros");
+        jMenuItem2.setText("Agregar Libro");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -102,6 +144,14 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem4);
+
+        jMenuItem5.setText("AgregarPrestamo");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
 
         jMenuBar1.add(jMenu3);
 
@@ -134,6 +184,16 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
         Escritorio.add(ldp);
         ldp.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void JBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_JBSalirActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        AgregarPrestamo ap = new AgregarPrestamo();
+        Escritorio.add(ap);
+        ap.show();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +232,8 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JButton JBSalir;
+    private javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabelFondo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -181,5 +243,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

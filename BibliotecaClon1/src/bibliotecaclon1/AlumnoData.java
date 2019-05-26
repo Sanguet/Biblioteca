@@ -2,6 +2,7 @@ package bibliotecaclon1;
 
 import java.sql.*;
 import java.util.*;
+import javax.swing.JComboBox;
 
 public class AlumnoData {
     private Connection connection = null;
@@ -192,4 +193,22 @@ public class AlumnoData {
         return alumnosEmail;
     } 
     
+        public static void listarAlumnos(JComboBox<String> cbx){
+        Conexion con = null;
+        
+        try {
+            con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+                AlumnoData a = new AlumnoData(con); 
+                
+                List<Alumno> alumnos = a.obtenerAlumnos();
+                for (int i = 0; i < alumnos.size(); i++){
+                cbx.addItem(alumnos.get(i).getNombre());
+                }
+                con.close();
+            }
+         catch (Exception e){
+            System.out.println("Error al listar alumnos: " + e.getMessage());
+        }
+    }
+
 }
