@@ -258,16 +258,16 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
 
     private void tfGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfGeneroKeyTyped
         char c = evt.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c == Character.SPACE_SEPARATOR)){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != Character.SPACE_SEPARATOR)){
             evt.consume();
         }
     }//GEN-LAST:event_tfGeneroKeyTyped
 
     private void tfAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfAutorKeyTyped
         char c = evt.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c == Character.SPACE_SEPARATOR)){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != Character.SPACE_SEPARATOR)){
             evt.consume();
-        }
+        }   
     }//GEN-LAST:event_tfAutorKeyTyped
 
 
