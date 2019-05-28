@@ -176,6 +176,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                 a.guardarAlumno(alumno);
                 JOptionPane.showMessageDialog(null, "Felicidades el alumno se agrego correctamente");
                 dispose();
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el alumno, el nombre es demasido largo o el alumno ya existe");
                 tfNombreAlumno.setText(null);

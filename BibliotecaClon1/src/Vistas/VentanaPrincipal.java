@@ -47,8 +47,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Harlow Solid Italic", 0, 24)); // NOI18N
-        jLabel2.setText("Apretar enter para ingresar");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
+        jLabel2.setText("Presiona cualquier tecla para ingresar");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -100,6 +100,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JBInicioKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JBInicioKeyTyped(evt);
+            }
         });
         getContentPane().add(JBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 870, 590));
 
@@ -130,6 +133,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_JBInicioKeyPressed
+
+    private void JBInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JBInicioKeyTyped
+        // TODO add your handling code here:
+        VentanaPrincipalInicio a = new VentanaPrincipalInicio();
+            a.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_JBInicioKeyTyped
 
     /**
      * @param args the command line arguments

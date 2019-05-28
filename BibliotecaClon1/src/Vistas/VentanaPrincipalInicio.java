@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author santi
@@ -18,6 +20,15 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     public VentanaPrincipalInicio() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    private int hayUnaVentanaAbierta = 0;
+    
+    public void ventanas(int num){
+        hayUnaVentanaAbierta = num;
+    }
+    
+    public int getVentanas(){
+        return hayUnaVentanaAbierta;
     }
     
     /**
@@ -161,9 +172,14 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        AgregarLibro al = new AgregarLibro();
-        Escritorio.add(al);
-        al.show();
+        if (hayUnaVentanaAbierta == 0){
+            AgregarLibro al = new AgregarLibro();
+            Escritorio.add(al);
+            al.show();
+            hayUnaVentanaAbierta = 1;
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya hay una ventana abierta");
+        }
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -173,16 +189,25 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        AgregarAlumno aa = new AgregarAlumno();
-        Escritorio.add(aa);
-        aa.show();
+        if (hayUnaVentanaAbierta == 0){
+            AgregarAlumno aa = new AgregarAlumno();
+            Escritorio.add(aa);
+            aa.show();
+            hayUnaVentanaAbierta = 1;
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya hay una ventana abierta");
+            }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        ListaDePrestamos ldp = new ListaDePrestamos();
-        Escritorio.add(ldp);
-        ldp.show();
+        if (hayUnaVentanaAbierta == 0){
+            ListaDePrestamos ldp = new ListaDePrestamos();
+            Escritorio.add(ldp);
+            ldp.show();
+            hayUnaVentanaAbierta = 1;
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya hay una ventana abierta");
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void JBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSalirActionPerformed
@@ -190,9 +215,14 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JBSalirActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        AgregarPrestamo ap = new AgregarPrestamo();
-        Escritorio.add(ap);
-        ap.show();
+        if (hayUnaVentanaAbierta == 0){
+            AgregarPrestamo ap = new AgregarPrestamo();
+            Escritorio.add(ap);
+            ap.show();
+            hayUnaVentanaAbierta = 1;
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya hay una ventana abierta");
+        }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
