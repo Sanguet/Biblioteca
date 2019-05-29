@@ -8,9 +8,12 @@ package Vistas;
 import bibliotecaclon1.Conexion;
 import bibliotecaclon1.Libro;
 import bibliotecaclon1.LibroData;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 /**
@@ -185,7 +188,7 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
             jlRestriccionNombre.setVisible(false);
         }
     }//GEN-LAST:event_tfNombreActionPerformed
-
+    
     private void jbAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarLibroActionPerformed
         // TODO add your handling code here:
         
@@ -257,14 +260,14 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
 
     private void tfGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfGeneroKeyTyped
         char c = evt.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != Character.SPACE_SEPARATOR)){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
             evt.consume();
         }
     }//GEN-LAST:event_tfGeneroKeyTyped
 
     private void tfAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfAutorKeyTyped
         char c = evt.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != Character.SPACE_SEPARATOR)){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
             evt.consume();
         }   
     }//GEN-LAST:event_tfAutorKeyTyped

@@ -8,6 +8,7 @@ package Vistas;
 import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import com.sun.glass.events.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -194,7 +195,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
 
     private void tfNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreAlumnoKeyTyped
         char c = evt.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != Character.SPACE_SEPARATOR)){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
             evt.consume();
             jlRestriccionNombre.setVisible(true);
         }
