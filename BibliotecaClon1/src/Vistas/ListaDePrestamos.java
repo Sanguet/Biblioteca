@@ -5,6 +5,15 @@
  */
 package Vistas;
 
+import bibliotecaclon1.AlumnoData;
+import bibliotecaclon1.Conexion;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
+import javax.swing.*;
+
 /**
  *
  * @author biane
@@ -35,6 +44,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         jbBuscar = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
+        jbMostrar = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
@@ -48,9 +58,18 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jtPrestamos.setRowHeight(30);
         jScrollPane1.setViewportView(jtPrestamos);
 
         jbCerrar.setText("Cerrar");
@@ -61,32 +80,57 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         });
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jbAgregar.setText("Agregar");
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarActionPerformed(evt);
+            }
+        });
 
         jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
+
+        jbMostrar.setText("Mostrar");
+        jbMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbCerrar)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlAListaPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)
-                        .addComponent(jbBuscar)
-                        .addGap(44, 44, 44)
-                        .addComponent(jbAgregar)
-                        .addGap(27, 27, 27)
-                        .addComponent(jbBorrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbMostrar)
+                        .addGap(166, 166, 166)
+                        .addComponent(jbCerrar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlAListaPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(152, 152, 152)
+                                .addComponent(jbBuscar)
+                                .addGap(36, 36, 36)
+                                .addComponent(jbAgregar)
+                                .addGap(35, 35, 35)
+                                .addComponent(jbBorrar)))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +141,13 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                     .addComponent(jbAgregar)
                     .addComponent(jbBorrar)
                     .addComponent(jlAListaPrestamos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbCerrar)
-                .addGap(82, 82, 82))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,7 +157,76 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbCerrarActionPerformed
 
+    
+    private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
+        /* MODO PRUEBA
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            AlumnoData ad = new AlumnoData(con);
+            //ArrayList<String> lista = ad.getPrestamosNombres(con);
+            
+            //mostrarLista(lista);
+            
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla por: " + e.getMessage());
+        }
+        */
+    }//GEN-LAST:event_jbMostrarActionPerformed
+    
+    
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
+        try{
+        if (jtPrestamos.getSelectedRow() != 1){
+            dtm.removeRow(jtPrestamos.getSelectedRow());
+        } else {
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo por");
+        }
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo por");
+        }
+    }//GEN-LAST:event_jbBorrarActionPerformed
+    
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        AgregarPrestamo ap = new AgregarPrestamo();
+        VentanaPrincipalInicio.Escritorio.add(ap);
+        ap.show();
+        ap.moveToFront();
+    }//GEN-LAST:event_jbAgregarActionPerformed
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        BuscarPrestamo bp = new BuscarPrestamo();
+        VentanaPrincipalInicio.Escritorio.add(bp);
+        bp.show();
+        bp.moveToFront();
+    }//GEN-LAST:event_jbBuscarActionPerformed
+    /* MODO PRUEBA
+    public void mostrarLista(ArrayList<String> lista){
+        String matris[][] = new String[lista.size()][4];
+        
+        for (int i = 0; i < lista.size(); i++){
+            matris[i][0] = lista.get(i);
+            matris[i][1] = lista.get(i);
+            matris[i][2] = lista.get(i);
+            matris[i][3] = lista.get(i);
+        }
+        
+        jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
+            }
+        ));
+        jtPrestamos.setRowHeight(30);
+        jScrollPane1.setViewportView(jtPrestamos);
+    }
+    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -119,7 +234,8 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCerrar;
+    private javax.swing.JButton jbMostrar;
     private javax.swing.JLabel jlAListaPrestamos;
-    private javax.swing.JTable jtPrestamos;
+    public static javax.swing.JTable jtPrestamos;
     // End of variables declaration//GEN-END:variables
 }
