@@ -53,32 +53,50 @@ public class AgregarPrestamo extends javax.swing.JInternalFrame {
         jcbLibro = new javax.swing.JComboBox<>();
         rsFechaPrestamo = new rojeru_san.componentes.RSDateChooser();
         rsFechaDevolucion = new rojeru_san.componentes.RSDateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlTitulo.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
         jlTitulo.setText("Agregar Prestamo");
+        getContentPane().add(jlTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
+        jlAlumno.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlAlumno.setText("Alumno");
+        getContentPane().add(jlAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
+        jlLibro.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlLibro.setText("Libro");
+        getContentPane().add(jlLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
+        jlFechaDePrestamo.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlFechaDePrestamo.setText("Fecha de prestamo");
+        getContentPane().add(jlFechaDePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
 
+        jlFechaDeDevolucion.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlFechaDeDevolucion.setText("Fecha de devolucion");
+        getContentPane().add(jlFechaDeDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
+        jbGuardar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jbGuardar.setText("Guardar y cerrar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 200, 40));
 
+        jbCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jbCerrar.setText("Cerrar");
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 120, 40));
 
         jcbAlumno.setEditable(true);
         jcbAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -86,71 +104,15 @@ public class AgregarPrestamo extends javax.swing.JInternalFrame {
                 jcbAlumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 230, -1));
 
         jcbLibro.setEditable(true);
+        getContentPane().add(jcbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 230, -1));
+        getContentPane().add(rsFechaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, 30));
+        getContentPane().add(rsFechaDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbCerrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbGuardar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlAlumno)
-                                    .addComponent(jlLibro)
-                                    .addComponent(jlFechaDePrestamo)
-                                    .addComponent(jlFechaDeDevolucion))
-                                .addGap(92, 92, 92)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jcbLibro, 0, 250, Short.MAX_VALUE)
-                                    .addComponent(jcbAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rsFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rsFechaDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(jlTitulo)))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlTitulo)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlAlumno)
-                            .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlLibro)
-                        .addComponent(jcbLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jlFechaDePrestamo)
-                    .addComponent(rsFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlFechaDeDevolucion)
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(rsFechaDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbCerrar))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,6 +161,7 @@ public class AgregarPrestamo extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbCerrar;
     private javax.swing.JButton jbGuardar;

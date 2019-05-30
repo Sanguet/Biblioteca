@@ -59,25 +59,25 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
         jLabel1.setText("Agregar Libro");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
 
-        jlNombreLibro.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jlNombreLibro.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlNombreLibro.setText("Nombre del libro:");
-        getContentPane().add(jlNombreLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 50));
+        getContentPane().add(jlNombreLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, 50));
 
-        jlCantidad.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jlCantidad.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlCantidad.setText("Cantidad:");
-        getContentPane().add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, -1));
+        getContentPane().add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 140, 40));
 
-        jlGenero.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jlGenero.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlGenero.setText("Género:");
-        getContentPane().add(jlGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        getContentPane().add(jlGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
-        jlAutor.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jlAutor.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlAutor.setText("Autor:");
-        getContentPane().add(jlAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
+        getContentPane().add(jlAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
         tfGenero.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -94,7 +94,7 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
                 tfGeneroKeyTyped(evt);
             }
         });
-        getContentPane().add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 430, 30));
+        getContentPane().add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 400, 30));
 
         tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -111,7 +111,7 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
                 tfNombreKeyTyped(evt);
             }
         });
-        getContentPane().add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, 30));
+        getContentPane().add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 400, 30));
 
         tfCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -123,11 +123,16 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
                 tfCantidadKeyTyped(evt);
             }
         });
-        getContentPane().add(tfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 430, 30));
+        getContentPane().add(tfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 400, 30));
 
         tfAutor.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tfAutorFocusLost(evt);
+            }
+        });
+        tfAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfAutorActionPerformed(evt);
             }
         });
         tfAutor.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -135,43 +140,52 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
                 tfAutorKeyTyped(evt);
             }
         });
-        getContentPane().add(tfAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 430, 30));
+        getContentPane().add(tfAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 400, 30));
 
-        jbAgregarLibro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jbAgregarLibro.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jbAgregarLibro.setText("Agregar y cerrar");
         jbAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAgregarLibroActionPerformed(evt);
             }
         });
-        getContentPane().add(jbAgregarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, 220, 40));
+        getContentPane().add(jbAgregarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 220, 40));
 
         jlRestriccionNombre.setVisible(false);
-        jlRestriccionNombre.setText("Es necesario rellenar este campo");
-        getContentPane().add(jlRestriccionNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+        jlRestriccionNombre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlRestriccionNombre.setForeground(new java.awt.Color(255, 51, 51));
+        jlRestriccionNombre.setText("* Es necesario rellenar este campo");
+        getContentPane().add(jlRestriccionNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
 
         jlRestriccionGenero.setVisible(false);
-        jlRestriccionGenero.setText("Es necesario rellenar este campo");
-        getContentPane().add(jlRestriccionGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
+        jlRestriccionGenero.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlRestriccionGenero.setForeground(new java.awt.Color(255, 51, 51));
+        jlRestriccionGenero.setText("* Es necesario rellenar este campo");
+        getContentPane().add(jlRestriccionGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
         jlRestriccionAutor.setVisible(false);
-        jlRestriccionAutor.setText("Es necesario rellenar este campo");
-        getContentPane().add(jlRestriccionAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
+        jlRestriccionAutor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlRestriccionAutor.setForeground(new java.awt.Color(255, 51, 51));
+        jlRestriccionAutor.setText("* Es necesario rellenar este campo");
+        getContentPane().add(jlRestriccionAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
 
+        jbCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jbCerrar.setText("Cerrar");
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 110, 40));
+        getContentPane().add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 110, 40));
 
         jlRestriccionCantidad.setVisible(false);
-        jlRestriccionCantidad.setText("Es necesario rellenar este campo");
-        getContentPane().add(jlRestriccionCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, -1));
+        jlRestriccionCantidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlRestriccionCantidad.setForeground(new java.awt.Color(255, 51, 51));
+        jlRestriccionCantidad.setText("* Es necesario rellenar este campo");
+        getContentPane().add(jlRestriccionCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,6 +285,10 @@ public class AgregarLibro extends javax.swing.JInternalFrame {
             evt.consume();
         }   
     }//GEN-LAST:event_tfAutorKeyTyped
+
+    private void tfAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAutorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfAutorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

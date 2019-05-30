@@ -44,6 +44,9 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         jlRestriccionNombre = new javax.swing.JLabel();
         jlRestriccionEmail = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -55,19 +58,28 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                 tfEmailActionPerformed(evt);
             }
         });
+        getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 280, 30));
 
+        jbAgregarAlumno.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jbAgregarAlumno.setText("Agregar y cerrar");
         jbAgregarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAgregarAlumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(jbAgregarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, 230, 40));
 
+        jlAgregarAlumno.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
         jlAgregarAlumno.setText("Agregar Alumno");
+        getContentPane().add(jlAgregarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
 
+        jlNombreAlumno.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlNombreAlumno.setText("Nombre del alumno:");
+        getContentPane().add(jlNombreAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
+        jlEmail.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jlEmail.setText("Email:");
+        getContentPane().add(jlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 80, -1));
 
         tfNombreAlumno.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -84,73 +96,31 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                 tfNombreAlumnoKeyTyped(evt);
             }
         });
+        getContentPane().add(tfNombreAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 278, 30));
 
         jlRestriccionNombre.setVisible(false);
-        jlRestriccionNombre.setText("Es necesario rellenar este campo");
+        jlRestriccionNombre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlRestriccionNombre.setForeground(new java.awt.Color(255, 51, 51));
+        jlRestriccionNombre.setText("* Es necesario rellenar este campo");
+        getContentPane().add(jlRestriccionNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, 20));
 
         jlRestriccionEmail.setVisible(false);
-        jlRestriccionEmail.setText("Es necesario rellenar este campo");
+        jlRestriccionEmail.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlRestriccionEmail.setForeground(new java.awt.Color(255, 51, 51));
+        jlRestriccionEmail.setText("* Es necesario rellenar este campo");
+        getContentPane().add(jlRestriccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
 
+        jButton1.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jButton1.setText("Cerar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 120, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(155, 155, 155)
-                            .addComponent(jlAgregarAlumno))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jlNombreAlumno)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlRestriccionNombre)
-                                    .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlRestriccionEmail)
-                                    .addComponent(tfEmail)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbAgregarAlumno)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlAgregarAlumno)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlNombreAlumno)
-                    .addComponent(tfNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jlRestriccionNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlEmail)
-                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jlRestriccionEmail)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAgregarAlumno)
-                    .addComponent(jButton1))
-                .addGap(26, 26, 26))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 700, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,6 +194,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbAgregarAlumno;
     private javax.swing.JLabel jlAgregarAlumno;
     private javax.swing.JLabel jlEmail;
