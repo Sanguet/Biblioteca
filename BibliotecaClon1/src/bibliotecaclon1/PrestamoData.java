@@ -159,6 +159,7 @@ public class PrestamoData {
         return prestamosDelLibro;
     }
     
+    //asd
      public List <String> obtenerPrestamosNombre(Conexion con){
     List <String> prestamosConNombre = new ArrayList<String>();
         
