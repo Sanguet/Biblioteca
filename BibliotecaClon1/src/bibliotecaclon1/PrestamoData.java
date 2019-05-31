@@ -192,8 +192,8 @@ public class PrestamoData {
     
     
     //Arreglar esto con la funcion que tiene bianca
-    public List <Prestamo> obtenerPresatamosBy(String alumno, String libro){
-        List <Prestamo> prestamosDeAlumno = new ArrayList<Prestamo>();
+    public List <String> obtenerPresatamosBy(String alumno, String libro, Conexion con){
+        List <String> prestamosConNombre = new ArrayList<String>();
         
         try {
             String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%?%\" AND l.nombre LIKE \"%?%\"";
@@ -201,23 +201,26 @@ public class PrestamoData {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, alumno);
             stmt.setString(2, libro);
+            AlumnoData ad = new AlumnoData(con);
+            LibroData ld = new LibroData(con);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             
             ResultSet rs = stmt.executeQuery();
-            Prestamo prestamo;
             while (rs.next()){
-                prestamo = new Prestamo();
-                prestamo.setIdAlumno(rs.getInt("alumno"));
-                prestamo.setIdLibro(rs.getInt("libro"));
-                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
-                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
-                
-                prestamosDeAlumno.add(prestamo);
+                String a = ad.getAlumnoById(rs.getInt("alumno")).getNombre();
+                String b = ld.getLibroById(rs.getInt("libro")).getNombre();
+                String c = sdf.format(rs.getDate("fechaPrestamo"));
+                String d = sdf.format(rs.getDate("fechaDevolucion"));
+                                           
+                prestamosConNombre.add(a);
+                prestamosConNombre.add(b);
+                prestamosConNombre.add(c);
+                prestamosConNombre.add(d);
             }
             stmt.close();
         } catch(SQLException ex){
             System.out.println("Error al obtener los alumnos: " + ex.getMessage());
         }
-        return prestamosDeAlumno;
+        return prestamosConNombre;
     } 
-    
 }

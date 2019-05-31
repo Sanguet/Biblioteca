@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import bibliotecaclon1.Conexion;
+import bibliotecaclon1.PrestamoData;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,8 +39,6 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
         tfLibro = new javax.swing.JTextField();
         btmBuscar = new javax.swing.JButton();
         btmCerrar = new javax.swing.JButton();
-        cbxNombre = new javax.swing.JComboBox<>();
-        cbxLibro = new javax.swing.JComboBox<>();
 
         lbNombre.setText("Nombre");
 
@@ -69,15 +70,6 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        cbxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-Z", "Z-A"}));
-        cbxNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxNombreActionPerformed(evt);
-            }
-        });
-
-        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-Z", "Z-A"}));
-
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
@@ -93,13 +85,9 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfLibro, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                             .addComponent(tfNombre))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxLibro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                        .addGap(0, 180, Short.MAX_VALUE)
+                        .addGap(0, 128, Short.MAX_VALUE)
                         .addComponent(btmCerrar)
                         .addGap(18, 18, 18)
                         .addComponent(btmBuscar)))
@@ -111,14 +99,11 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombre)
-                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbLibro)
-                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tfLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btmCerrar)
@@ -140,10 +125,6 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxNombreActionPerformed
-
     private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
         int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
         if(JOptionPane.YES_OPTION == msj){
@@ -153,6 +134,15 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
 
     private void btmBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmBuscarActionPerformed
         // TODO add your handling code here:
+        try {
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            PrestamoData pd = new PrestamoData(con);
+            List<String> nuevaLista = pd.obtenerPresatamosBy(tfNombre.getText(), tfLibro.getText(),con);
+            //Falta lo que tiene bianca para cambiar el nuevaLista en la lista que se muestra en ListaDePrestamos
+            
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Fallo bro" );
+        }
 
     }//GEN-LAST:event_btmBuscarActionPerformed
 
@@ -168,8 +158,6 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btmBuscar;
     private javax.swing.JButton btmCerrar;
-    private javax.swing.JComboBox<String> cbxLibro;
-    private javax.swing.JComboBox<String> cbxNombre;
     private javax.swing.JPanel jPanel;
     private javax.swing.JLabel lbLibro;
     private javax.swing.JLabel lbNombre;
