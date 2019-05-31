@@ -1,6 +1,7 @@
 package bibliotecaclon1;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class PrestamoData {
@@ -157,6 +158,36 @@ public class PrestamoData {
         }
         return prestamosDelLibro;
     }
+    
+     public List <String> obtenerPrestamosNombre(Conexion con){
+    List <String> prestamosConNombre = new ArrayList<String>();
+        
+        try {
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery(); 
+            AlumnoData ad = new AlumnoData(con);
+            LibroData ld = new LibroData(con);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            while (rs.next()){ 
+                String a = ad.getAlumnoById(rs.getInt("alumno")).getNombre();
+                String b = ld.getLibroById(rs.getInt("libro")).getNombre();
+                String c = sdf.format(rs.getDate("fechaPrestamo"));
+                String d = sdf.format(rs.getDate("fechaDevolucion"));
+                                           
+                prestamosConNombre.add(a);
+                prestamosConNombre.add(b);
+                prestamosConNombre.add(c);
+                prestamosConNombre.add(d);
+                
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los préstamos: " + ex.getMessage());
+        }
+        return prestamosConNombre;
+    } 
     
     
     //Arreglar esto con la funcion que tiene bianca
