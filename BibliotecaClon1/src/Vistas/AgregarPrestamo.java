@@ -118,7 +118,10 @@ public class AgregarPrestamo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
-        dispose();
+        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
+        if(JOptionPane.YES_OPTION == msj){
+            dispose();
+        }
     }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void jcbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnoActionPerformed

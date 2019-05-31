@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ivan
@@ -32,12 +34,10 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
         tfNombre = new javax.swing.JTextField();
         lbLibro = new javax.swing.JLabel();
         tfLibro = new javax.swing.JTextField();
-        lbFechaDePrestamo = new javax.swing.JLabel();
-        tfFechaDePrestamo = new javax.swing.JTextField();
-        lbFechaDeDevolucion = new javax.swing.JLabel();
-        tfFechaDeDevolucion = new javax.swing.JTextField();
         btmBuscar = new javax.swing.JButton();
         btmCerrar = new javax.swing.JButton();
+        cbxNombre = new javax.swing.JComboBox<>();
+        cbxLibro = new javax.swing.JComboBox<>();
 
         lbNombre.setText("Nombre");
 
@@ -55,10 +55,6 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        lbFechaDePrestamo.setText("Fecha de prestamo");
-
-        lbFechaDeDevolucion.setText("Fecha de devolucion");
-
         btmBuscar.setText("Buscar");
         btmBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,21 +69,22 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        cbxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-Z", "Z-A"}));
+        cbxNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxNombreActionPerformed(evt);
+            }
+        });
+
+        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-Z", "Z-A"}));
+
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addComponent(lbFechaDeDevolucion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfFechaDeDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addComponent(lbFechaDePrestamo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfFechaDePrestamo))
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createSequentialGroup()
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbNombre)
@@ -95,38 +92,37 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfLibro, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                            .addComponent(tfNombre))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(btmCerrar)
-                .addGap(18, 18, 18)
-                .addComponent(btmBuscar)
+                            .addComponent(tfNombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxLibro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                        .addGap(0, 180, Short.MAX_VALUE)
+                        .addComponent(btmCerrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btmBuscar)))
                 .addContainerGap())
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(17, 17, 17)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombre)
-                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbLibro)
-                    .addComponent(tfLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbFechaDePrestamo)
-                    .addComponent(tfFechaDePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbFechaDeDevolucion)
-                    .addComponent(tfFechaDeDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btmBuscar)
-                    .addComponent(btmCerrar))
+                    .addComponent(btmCerrar)
+                    .addComponent(btmBuscar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -144,17 +140,25 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibroActionPerformed
+    private void cbxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfLibroActionPerformed
+    }//GEN-LAST:event_cbxNombreActionPerformed
 
     private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
-        dispose();
+        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
+        if(JOptionPane.YES_OPTION == msj){
+            dispose();
+        }
     }//GEN-LAST:event_btmCerrarActionPerformed
 
     private void btmBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmBuscarActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btmBuscarActionPerformed
+
+    private void tfLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLibroActionPerformed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
         // TODO add your handling code here:
@@ -164,13 +168,11 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btmBuscar;
     private javax.swing.JButton btmCerrar;
+    private javax.swing.JComboBox<String> cbxLibro;
+    private javax.swing.JComboBox<String> cbxNombre;
     private javax.swing.JPanel jPanel;
-    private javax.swing.JLabel lbFechaDeDevolucion;
-    private javax.swing.JLabel lbFechaDePrestamo;
     private javax.swing.JLabel lbLibro;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JTextField tfFechaDeDevolucion;
-    private javax.swing.JTextField tfFechaDePrestamo;
     private javax.swing.JTextField tfLibro;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables

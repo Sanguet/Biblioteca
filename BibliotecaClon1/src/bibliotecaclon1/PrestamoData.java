@@ -156,6 +156,36 @@ public class PrestamoData {
             System.out.println("Error al obtener los alumnos: " + ex.getMessage());
         }
         return prestamosDelLibro;
+    }
+    
+    
+    //Arreglar esto con la funcion que tiene bianca
+    public List <Prestamo> obtenerPresatamosBy(String alumno, String libro){
+        List <Prestamo> prestamosDeAlumno = new ArrayList<Prestamo>();
+        
+        try {
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%?%\" AND l.nombre LIKE \"%?%\"";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, alumno);
+            stmt.setString(2, libro);
+            
+            ResultSet rs = stmt.executeQuery();
+            Prestamo prestamo;
+            while (rs.next()){
+                prestamo = new Prestamo();
+                prestamo.setIdAlumno(rs.getInt("alumno"));
+                prestamo.setIdLibro(rs.getInt("libro"));
+                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
+                
+                prestamosDeAlumno.add(prestamo);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return prestamosDeAlumno;
     } 
     
 }

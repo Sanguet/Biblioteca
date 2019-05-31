@@ -36,18 +36,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbFechaDeDevolucion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tfFechaDeDevolucion" pref="164" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbFechaDePrestamo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="tfFechaDePrestamo" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbLibro" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -57,15 +47,20 @@
                               <Component id="tfLibro" pref="227" max="32767" attributes="0"/>
                               <Component id="tfNombre" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cbxNombre" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="cbxLibro" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="180" max="32767" attributes="0"/>
+                          <Component id="btmCerrar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="btmBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="141" max="32767" attributes="0"/>
-                  <Component id="btmCerrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btmBuscar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -73,30 +68,24 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbxNombre" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lbLibro" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfLibro" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="tfLibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxLibro" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbFechaDePrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfFechaDePrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbFechaDeDevolucion" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfFechaDeDevolucion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btmBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btmCerrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btmBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -124,20 +113,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLibroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbFechaDePrestamo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha de prestamo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfFechaDePrestamo">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbFechaDeDevolucion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha de devolucion"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfFechaDeDevolucion">
-        </Component>
         <Component class="javax.swing.JButton" name="btmBuscar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
@@ -153,6 +128,29 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btmCerrarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbxNombre">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;A-Z&quot;, &quot;Z-A&quot;})" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxNombreActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbxLibro">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;A-Z&quot;, &quot;Z-A&quot;})" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
