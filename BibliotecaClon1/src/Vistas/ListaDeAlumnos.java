@@ -50,6 +50,7 @@ public class ListaDeAlumnos extends java.awt.Dialog {
         jLabel1 = new javax.swing.JLabel();
 
         setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
