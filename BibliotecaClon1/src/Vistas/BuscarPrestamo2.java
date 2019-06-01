@@ -5,8 +5,14 @@
  */
 package Vistas;
 
+import static Vistas.ListaDePrestamos.jScrollPane1;
+import static Vistas.ListaDePrestamos.jtPrestamos;
+import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import bibliotecaclon1.LibroData;
+import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -119,14 +125,43 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         try {
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
             PrestamoData pd = new PrestamoData(con);
-            List<String> nuevaLista = pd.obtenerPresatamosBy(tfNombre.getText(), tfLibro.getText(),con);
-            //Falta lo que tiene bianca para cambiar el nuevaLista en la lista que se muestra en ListaDePrestamos
+            List<Prestamo> nuevaLista = pd.obtenerPrestamosByAlumnoByLibro(tfNombre.getText(), tfLibro.getText());
+            mostrarLista(nuevaLista);
 
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Fallo bro" );
         }
     }//GEN-LAST:event_btmBuscarActionPerformed
 
+    public void mostrarLista(List<Prestamo> lista){
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            String matris[][] = new String[lista.size()][4];
+            AlumnoData ad = new AlumnoData(con);
+            LibroData ld = new LibroData(con);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            for (int i = 0; i < lista.size(); i++){
+                matris[i][0] = ad.getAlumnoById(lista.get(i).getIdAlumno()).getNombre();
+                matris[i][1] = ld.getLibroById(lista.get(i).getIdLibro()).getNombre();
+                matris[i][2] = sdf.format(lista.get(i).getFechaPrestamo());
+                matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
+            }
+            
+            ListaDePrestamos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            matris,
+            new String [] {
+                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
+            }
+            ));
+            jtPrestamos.setRowHeight(30);
+            jScrollPane1.setViewportView(jtPrestamos);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No funciono bro");
+        }
+    }
+    
     private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
         int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
         if(JOptionPane.YES_OPTION == msj){

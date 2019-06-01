@@ -27,6 +27,17 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
      */
     public ListaDePrestamos() {
         initComponents();
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            PrestamoData pd = new PrestamoData(con);
+            List<Prestamo> lista = pd.obtenerPrestamos();
+            
+            mostrarLista(lista);
+            
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
     }
 
     /**
@@ -46,7 +57,6 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         jbBuscar = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
-        jbMostrar = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
@@ -102,13 +112,6 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbMostrar.setText("Mostrar");
-        jbMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbMostrarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,8 +120,6 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbMostrar)
-                        .addGap(166, 166, 166)
                         .addComponent(jbCerrar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -146,9 +147,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jbCerrar)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -159,22 +158,6 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbCerrarActionPerformed
 
-    
-    private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
-        try{
-            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-            PrestamoData pd = new PrestamoData(con);
-            List<Prestamo> lista = pd.obtenerPrestamos();
-            
-            mostrarLista(lista);
-            
-            
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla por: " + e.getMessage());
-        }
-    }//GEN-LAST:event_jbMostrarActionPerformed
-    
-    
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
         DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
         try{
@@ -212,7 +195,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
             }
             
-            jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            ListaDePrestamos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
                 "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
@@ -227,12 +210,11 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
-    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCerrar;
-    private javax.swing.JButton jbMostrar;
     private javax.swing.JLabel jlAListaPrestamos;
     public static javax.swing.JTable jtPrestamos;
     // End of variables declaration//GEN-END:variables
