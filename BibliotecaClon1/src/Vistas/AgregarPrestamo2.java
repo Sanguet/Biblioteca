@@ -52,6 +52,7 @@ public class AgregarPrestamo2 extends java.awt.Dialog {
         rsFechaDevolucion = new rojeru_san.componentes.RSDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);

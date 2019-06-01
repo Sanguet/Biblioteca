@@ -46,7 +46,7 @@ public class AgregarAlumno2 extends java.awt.Dialog {
         tfNombreAlumno = new javax.swing.JTextField();
         jlRestriccionNombre = new javax.swing.JLabel();
         jlRestriccionEmail = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -121,14 +121,14 @@ public class AgregarAlumno2 extends java.awt.Dialog {
         jlRestriccionEmail.setText("* Es necesario rellenar este campo");
         jPanel1.add(jlRestriccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
-        jButton1.setText("Cerar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 120, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 90, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 700, 620));
@@ -208,9 +208,9 @@ public class AgregarAlumno2 extends java.awt.Dialog {
         }
     }//GEN-LAST:event_tfNombreAlumnoKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +231,7 @@ public class AgregarAlumno2 extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbAgregarAlumno;

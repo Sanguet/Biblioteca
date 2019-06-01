@@ -28,8 +28,8 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
      */
     public BuscarPrestamo2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-        this.setBounds(550, 142, 700, 600);
+        initComponents(); 
+       this.setBounds(680, 270, 450, 292);
     }
 
     /**
