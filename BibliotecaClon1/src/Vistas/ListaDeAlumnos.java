@@ -27,6 +27,8 @@ public class ListaDeAlumnos extends java.awt.Dialog {
     public ListaDeAlumnos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setBounds(550, 142, 700, 600);
+
     }
 
     /**
@@ -47,6 +49,7 @@ public class ListaDeAlumnos extends java.awt.Dialog {
         jbBorrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);

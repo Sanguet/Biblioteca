@@ -112,7 +112,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem2.setText("Agregar Libro");
+        jMenuItem2.setText("Lista de Libros");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -124,7 +124,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
 
         jMenu2.setText("Alumnos");
 
-        jMenuItem3.setText("AgregarAlumno");
+        jMenuItem3.setText("Lista de Alumnos");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -152,7 +152,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-            new AgregarLibro3(this, true).setVisible(true);
+            new ListaDeLibros(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -160,7 +160,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-            new AgregarAlumno2(this, true).setVisible(true);
+            new ListaDeAlumnos(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
