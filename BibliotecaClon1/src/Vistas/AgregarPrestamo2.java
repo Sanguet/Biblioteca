@@ -28,7 +28,7 @@ public class AgregarPrestamo2 extends java.awt.Dialog {
     public AgregarPrestamo2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setBounds(550, 142, 700, 600);
+        this.setBounds(433, 96, 700, 600);
         agregarComboAlumno();
         agregarComboLibro();
         AutoCompleteDecorator.decorate(jcbAlumno);

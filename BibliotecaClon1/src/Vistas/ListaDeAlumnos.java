@@ -5,7 +5,12 @@
  */
 package Vistas;
 
+import static Vistas.ListaDePrestamos2.jScrollPane1;
+import static Vistas.ListaDePrestamos2.jtPrestamos;
+import bibliotecaclon1.Alumno;
+import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import bibliotecaclon1.Libro;
 import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
@@ -27,9 +32,46 @@ public class ListaDeAlumnos extends java.awt.Dialog {
     public ListaDeAlumnos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setBounds(550, 142, 700, 600);
+        this.setBounds(433, 96, 700, 600);
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            AlumnoData ad = new AlumnoData(con);
+            List<Alumno> lista = ad.obtenerAlumnos();
+            
+            mostrarLista(lista);
+            
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
 
     }
+    
+    public void mostrarLista(List<Alumno> lista){
+        try{
+            String matris[][] = new String[lista.size()][2];
+            
+            for (int i = 0; i < lista.size(); i++){
+                matris[i][0] = lista.get(i).getNombre();
+                matris[i][1] = lista.get(i).getEmail();
+            }
+            
+            jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            matris,
+            new String [] {
+                "Alumno", "Libro"
+            }
+            ));
+            jtPrestamos.setRowHeight(30);
+            jScrollPane1.setViewportView(jtPrestamos);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No funciono bro");
+        }
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +89,7 @@ public class ListaDeAlumnos extends java.awt.Dialog {
         jbBuscar = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -128,6 +171,14 @@ public class ListaDeAlumnos extends java.awt.Dialog {
         });
         jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
 
+        jButton1.setLabel("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
@@ -162,6 +213,13 @@ public class ListaDeAlumnos extends java.awt.Dialog {
         DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
         try{
             if (jtPrestamos.getSelectedRow() != 1){
+                DefaultTableModel tm = (DefaultTableModel) jtPrestamos.getModel();
+                String nombreAlumno =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),0));
+                Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+                AlumnoData ad = new AlumnoData(con);
+                //
+                Alumno alumno = ad.getAlumnoByName(nombreAlumno);
+                ad.borrarAlumno(alumno);
                 dtm.removeRow(jtPrestamos.getSelectedRow());
             } else {
                 JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
@@ -170,6 +228,21 @@ public class ListaDeAlumnos extends java.awt.Dialog {
             JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            AlumnoData ad = new AlumnoData(con);
+            List<Alumno> lista = ad.obtenerAlumnos();
+            
+            mostrarLista(lista);
+            
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +263,7 @@ public class ListaDeAlumnos extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jScrollPane1;

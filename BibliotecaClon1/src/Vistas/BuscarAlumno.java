@@ -29,7 +29,7 @@ public class BuscarAlumno extends java.awt.Dialog {
     public BuscarAlumno(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setBounds(680, 270, 450, 292);
+        this.setBounds(565, 260, 450, 292);
     }
 
     /**

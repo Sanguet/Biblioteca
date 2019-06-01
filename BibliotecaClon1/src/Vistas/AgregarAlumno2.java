@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import static Vistas.ListaDeAlumnos.jtPrestamos;
 import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +27,7 @@ public class AgregarAlumno2 extends java.awt.Dialog {
      */
     public AgregarAlumno2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.setBounds(550, 142, 700, 600);
+        this.setBounds(433, 96, 700, 600);
         initComponents();
     }
 

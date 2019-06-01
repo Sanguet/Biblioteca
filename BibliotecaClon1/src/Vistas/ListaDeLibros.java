@@ -5,7 +5,12 @@
  */
 package Vistas;
 
+import static Vistas.ListaDeAlumnos.jScrollPane1;
+import static Vistas.ListaDeAlumnos.jtPrestamos;
+import bibliotecaclon1.Alumno;
+import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import bibliotecaclon1.Libro;
 import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
@@ -27,7 +32,43 @@ public class ListaDeLibros extends java.awt.Dialog {
     public ListaDeLibros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setBounds(550, 142, 700, 600);
+        this.setBounds(433, 96, 700, 600);
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            LibroData ld = new LibroData(con);
+            List<Libro> lista = ld.obtenerLibros();
+            
+            mostrarLista(lista);
+            
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
+    }
+    
+    public void mostrarLista(List<Libro> lista){
+        try{
+            String matris[][] = new String[lista.size()][4];
+            
+            for (int i = 0; i < lista.size(); i++){
+                matris[i][0] = lista.get(i).getNombre();
+                matris[i][1] = Integer.toString(lista.get(i).getCantidad());
+                matris[i][2] = lista.get(i).getGenero();
+                matris[i][3] = lista.get(i).getAutor();
+            }
+            
+            jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            matris,
+            new String [] {
+                "Libro", "Cantidad", "Genero", "Autor"
+            }
+            ));
+            jtPrestamos.setRowHeight(30);
+            jScrollPane1.setViewportView(jtPrestamos);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No funciono bro");
+        }
     }
 
     /**
@@ -46,6 +87,7 @@ public class ListaDeLibros extends java.awt.Dialog {
         jbBuscar = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -126,6 +168,14 @@ public class ListaDeLibros extends java.awt.Dialog {
         });
         jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
 
+        jButton1.setLabel("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
@@ -169,6 +219,20 @@ public class ListaDeLibros extends java.awt.Dialog {
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            LibroData ld = new LibroData(con);
+            List<Libro> lista = ld.obtenerLibros();
+            
+            mostrarLista(lista);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,6 +252,7 @@ public class ListaDeLibros extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jScrollPane1;

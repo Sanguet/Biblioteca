@@ -159,6 +159,33 @@ public class PrestamoData {
         return prestamosDelLibro;
     }
     
+    public Prestamo obtenerPrestamoPorLibroAndAlumno(Alumno alumno, Libro libro){
+    Prestamo prestamo = new Prestamo();
+        
+        try {
+            String sql = "SELECT p.id as id, a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND p.idAlumno = ? AND p.idLibro = ?";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(2, libro.getId());
+            stmt.setInt(1, alumno.getId());
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+                prestamo.setId(rs.getInt("id"));
+                prestamo.setIdAlumno(rs.getInt("alumno"));
+                prestamo.setIdLibro(rs.getInt("libro"));
+                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
+                
+            
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return prestamo;
+    }
+    
+    //En prueba
+    
     public List <Prestamo> obtenerPrestamosByAlumnoByLibro(String alumno, String libro){
     List <Prestamo> prestamosDelLibro = new ArrayList<Prestamo>();
         
@@ -188,81 +215,4 @@ public class PrestamoData {
         }
         return prestamosDelLibro;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //Borrar despues
-     public ArrayList <String> obtenerPrestamosNombre(Conexion con){
-    ArrayList <String> prestamosConNombre = new ArrayList<String>();
-        
-        try {
-            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id";
-            
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery(); 
-            AlumnoData ad = new AlumnoData(con);
-            LibroData ld = new LibroData(con);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            while (rs.next()){ 
-                String a = ad.getAlumnoById(rs.getInt("alumno")).getNombre();
-                String b = ld.getLibroById(rs.getInt("libro")).getNombre();
-                String c = sdf.format(rs.getDate("fechaPrestamo"));
-                String d = sdf.format(rs.getDate("fechaDevolucion"));
-                                           
-                prestamosConNombre.add(a);
-                prestamosConNombre.add(b);
-                prestamosConNombre.add(c);
-                prestamosConNombre.add(d);
-                
-            }
-            stmt.close();
-        } catch(SQLException ex){
-            System.out.println("Error al obtener los préstamos: " + ex.getMessage());
-        }
-        return prestamosConNombre;
-    } 
-    
-    
-    //Arreglar esto con la funcion que tiene bianca
-    public List <String> obtenerPresatamosBy(String alumno, String libro, Conexion con){
-        List <String> prestamosConNombre = new ArrayList<String>();
-        
-        try {
-            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%?%\" AND l.nombre LIKE \"%?%\"";
-            
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, alumno);
-            stmt.setString(2, libro);
-            AlumnoData ad = new AlumnoData(con);
-            LibroData ld = new LibroData(con);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){
-                String a = ad.getAlumnoById(rs.getInt("alumno")).getNombre();
-                String b = ld.getLibroById(rs.getInt("libro")).getNombre();
-                String c = sdf.format(rs.getDate("fechaPrestamo"));
-                String d = sdf.format(rs.getDate("fechaDevolucion"));
-                                           
-                prestamosConNombre.add(a);
-                prestamosConNombre.add(b);
-                prestamosConNombre.add(c);
-                prestamosConNombre.add(d);
-            }
-            stmt.close();
-        } catch(SQLException ex){
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
-        }
-        return prestamosConNombre;
-    } 
 }

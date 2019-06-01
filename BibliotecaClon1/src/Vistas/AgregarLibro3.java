@@ -30,7 +30,7 @@ public class AgregarLibro3 extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
         this.setModal(true);
-        this.setBounds(550, 142, 700, 600);
+        this.setBounds(433, 96, 700, 600);
     }
 
     /**

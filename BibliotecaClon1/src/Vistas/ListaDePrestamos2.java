@@ -7,8 +7,10 @@ package Vistas;
 
 import static Vistas.ListaDePrestamos.jScrollPane1;
 import static Vistas.ListaDePrestamos.jtPrestamos;
+import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import bibliotecaclon1.Libro;
 import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
@@ -31,7 +33,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
     public ListaDePrestamos2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setBounds(550, 142, 700, 600);
+        this.setBounds(433, 96, 700, 600);
         try{
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
             PrestamoData pd = new PrestamoData(con);
@@ -175,6 +177,18 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
         DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
         try{
             if (jtPrestamos.getSelectedRow() != 1){
+                DefaultTableModel tm = (DefaultTableModel) jtPrestamos.getModel();
+                String nombreAlumno =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),0));
+                String nombreLibro =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),1));
+                Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+                PrestamoData pd = new PrestamoData(con);
+                AlumnoData ad = new AlumnoData(con);
+                LibroData ld = new LibroData(con);
+                //
+                Alumno alumno = ad.getAlumnoByName(nombreAlumno);
+                Libro libro = ld.getLibroByName(nombreLibro);
+                Prestamo prestamoBorrar = pd.obtenerPrestamoPorLibroAndAlumno(alumno, libro);
+                pd.borrarPrestamo(prestamoBorrar);
                 dtm.removeRow(jtPrestamos.getSelectedRow());
             } else {
                 JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
