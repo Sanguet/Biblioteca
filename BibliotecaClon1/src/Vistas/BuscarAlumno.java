@@ -5,18 +5,10 @@
  */
 package Vistas;
 
-import static Vistas.ListaDeAlumnos.jScrollPane1;
-import static Vistas.ListaDeAlumnos.jtPrestamos;
-import static Vistas.ListaDePrestamos.jScrollPane1;
-import static Vistas.ListaDePrestamos.jtPrestamos;
 import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
-import bibliotecaclon1.LibroData;
-import bibliotecaclon1.Prestamo;
-import bibliotecaclon1.PrestamoData;
 import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -141,7 +133,7 @@ public class BuscarAlumno extends java.awt.Dialog {
             dispose();
 
         } catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Fallo bro" );
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en la lista, vuelve a intentarlo" );
         }
     }//GEN-LAST:event_btmBuscarActionPerformed
 
@@ -180,7 +172,7 @@ public class BuscarAlumno extends java.awt.Dialog {
             ListaDeAlumnos.jScrollPane1.setViewportView(ListaDeAlumnos.jtPrestamos);
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No funciono bro");
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en la lista, vuelve a intentarlo");
         }
     }
     

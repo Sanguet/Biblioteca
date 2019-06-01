@@ -5,20 +5,12 @@
  */
 package Vistas;
 
-import static Vistas.ListaDeAlumnos.jScrollPane1;
-import static Vistas.ListaDeAlumnos.jtPrestamos;
-import bibliotecaclon1.Alumno;
-import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
 import bibliotecaclon1.Libro;
 import bibliotecaclon1.LibroData;
-import bibliotecaclon1.Prestamo;
-import bibliotecaclon1.PrestamoData;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
 
 /**
  *
@@ -67,7 +59,7 @@ public class ListaDeLibros extends java.awt.Dialog {
             jScrollPane1.setViewportView(jtPrestamos);
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No funciono bro");
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en la lista, vuelve a intentarlo");
         }
     }
 

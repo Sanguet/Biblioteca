@@ -5,20 +5,12 @@
  */
 package Vistas;
 
-import static Vistas.ListaDePrestamos2.jScrollPane1;
-import static Vistas.ListaDePrestamos2.jtPrestamos;
 import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
-import bibliotecaclon1.Libro;
-import bibliotecaclon1.LibroData;
-import bibliotecaclon1.Prestamo;
-import bibliotecaclon1.PrestamoData;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
 
 /**
  *
@@ -59,14 +51,14 @@ public class ListaDeAlumnos extends java.awt.Dialog {
             jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
-                "Alumno", "Libro"
+                "Alumno", "Email"
             }
             ));
             jtPrestamos.setRowHeight(30);
             jScrollPane1.setViewportView(jtPrestamos);
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No funciono bro");
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en la lista, vuelve a intentarlo");
         }
     }
     
@@ -122,7 +114,7 @@ public class ListaDeAlumnos extends java.awt.Dialog {
                 java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -172,7 +164,6 @@ public class ListaDeAlumnos extends java.awt.Dialog {
         jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 30, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refrescar (3).png"))); // NOI18N
-        jButton1.setText("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
