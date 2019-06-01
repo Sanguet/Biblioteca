@@ -163,11 +163,13 @@ public class PrestamoData {
     List <Prestamo> prestamosDelLibro = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%?%\" AND l.nombre LIKE \"%?%\"";
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%pepe%\" AND l.nombre LIKE \"%rosa%\";";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, alumno);
             stmt.setString(2, libro);
+            //stmt.setString(1, "\""+ "%" + alumno + "%" +"\"");
+            //stmt.setString(2, "\""+ "%" + libro + "%" +"\"");
             
             ResultSet rs = stmt.executeQuery();
             Prestamo prestamo;

@@ -82,9 +82,16 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jtPrestamos.setRowHeight(30);
@@ -172,7 +179,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
             }
             
-            ListaDePrestamos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
                 "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"

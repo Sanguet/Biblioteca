@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import static Vistas.ListaDePrestamos.jScrollPane1;
+import static Vistas.ListaDePrestamos.jtPrestamos;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
 import bibliotecaclon1.LibroData;
@@ -30,6 +32,17 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
         this.setBounds(550, 142, 700, 600);
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            PrestamoData pd = new PrestamoData(con);
+            List<Prestamo> lista = pd.obtenerPrestamos();
+            
+            mostrarLista(lista);
+            
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
     }
 
     /**
@@ -164,6 +177,35 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
+    public void mostrarLista(List<Prestamo> lista){
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            String matris[][] = new String[lista.size()][4];
+            AlumnoData ad = new AlumnoData(con);
+            LibroData ld = new LibroData(con);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            for (int i = 0; i < lista.size(); i++){
+                matris[i][0] = ad.getAlumnoById(lista.get(i).getIdAlumno()).getNombre();
+                matris[i][1] = ld.getLibroById(lista.get(i).getIdLibro()).getNombre();
+                matris[i][2] = sdf.format(lista.get(i).getFechaPrestamo());
+                matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
+            }
+            
+            ListaDePrestamos2.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            matris,
+            new String [] {
+                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
+            }
+            ));
+            jtPrestamos.setRowHeight(30);
+            jScrollPane1.setViewportView(jtPrestamos);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No funciono bro");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
