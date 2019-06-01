@@ -210,6 +210,13 @@ public class ListaDeLibros extends java.awt.Dialog {
         DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
         try{
             if (jtPrestamos.getSelectedRow() != 1){
+                DefaultTableModel tm = (DefaultTableModel) jtPrestamos.getModel();
+                String nombreLibro =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),0));
+                Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+                LibroData ld = new LibroData(con);
+                //
+                Libro libro = ld.getLibroByName(nombreLibro);
+                ld.borrarLibro(libro);
                 dtm.removeRow(jtPrestamos.getSelectedRow());
             } else {
                 JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
