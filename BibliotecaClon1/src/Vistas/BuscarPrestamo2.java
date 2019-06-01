@@ -150,7 +150,7 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
                 matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
             }
             
-            ListaDePrestamos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            ListaDePrestamos2.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
                 "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
@@ -160,7 +160,7 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             jScrollPane1.setViewportView(jtPrestamos);
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No funciono bro");
+            JOptionPane.showMessageDialog(null, "No funciono bro123");
         }
     }
     
