@@ -172,13 +172,13 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBorrarActionPerformed
     
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-        JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
-        dialogo2.setVisible(true);
+        AgregarLibro3 dialog = new AgregarLibro3(new java.awt.Frame(), true);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
-        dialogo2.setVisible(true);
+        BuscarPrestamo2 dialog = new BuscarPrestamo2(new java.awt.Frame(), true);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jbBuscarActionPerformed
     public void mostrarLista(List<Prestamo> lista){
         try{
