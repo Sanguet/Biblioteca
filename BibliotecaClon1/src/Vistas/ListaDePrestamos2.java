@@ -63,6 +63,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
         jbBuscar = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -133,7 +134,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
                 jbAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 30, -1));
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
 
         jbBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5-03.png"))); // NOI18N
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +142,15 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
                 jbBorrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
+        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 30, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refrescar (3).png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 30, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
@@ -198,6 +207,20 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            PrestamoData op = new PrestamoData(con);
+            List<Prestamo> lista = op.obtenerPrestamos();
+
+            mostrarLista(lista);
+
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void mostrarLista(List<Prestamo> lista){
         try{
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
@@ -246,6 +269,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jScrollPane1;

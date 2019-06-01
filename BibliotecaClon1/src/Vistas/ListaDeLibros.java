@@ -158,7 +158,7 @@ public class ListaDeLibros extends java.awt.Dialog {
                 jbAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 30, -1));
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
 
         jbBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5-03.png"))); // NOI18N
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,15 +166,16 @@ public class ListaDeLibros extends java.awt.Dialog {
                 jbBorrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
+        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 30, -1));
 
-        jButton1.setLabel("Actualizar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refrescar (3).png"))); // NOI18N
+        jButton1.setText("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 30, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
