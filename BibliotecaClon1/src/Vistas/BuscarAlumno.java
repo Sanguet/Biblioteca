@@ -89,13 +89,13 @@ public class BuscarAlumno extends java.awt.Dialog {
         jPanel1.add(btmBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 90, 30));
 
         btmCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
-        btmCerrar.setText("Cerar");
+        btmCerrar.setText("Cerrar");
         btmCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btmCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 80, 30));
+        jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 300));

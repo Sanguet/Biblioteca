@@ -13,6 +13,7 @@ import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
 import java.time.LocalDate;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /**
@@ -28,8 +29,41 @@ public class AgregarPrestamo2 extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
         this.setBounds(550, 142, 700, 600);
+        agregarComboAlumno();
+        agregarComboLibro();
+        AutoCompleteDecorator.decorate(jcbAlumno);
+        AutoCompleteDecorator.decorate(jcbLibro);
     }
 
+    private void agregarComboAlumno(){
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            AlumnoData ad = new AlumnoData(con);
+            List<Alumno> listA = ad.obtenerAlumnos();
+            for (int i = 0; i < listA.size(); i++){
+                jcbAlumno.addItem(listA.get(i).getNombre());
+            }
+            
+        }catch (Exception e){
+          JOptionPane.showMessageDialog(null, "Fallo bro");
+        }
+    }
+    
+        private void agregarComboLibro(){
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            LibroData ld = new LibroData(con);
+            List<Libro> listA = ld.obtenerLibros();
+            for (int i = 0; i < listA.size(); i++){
+                jcbLibro.addItem(listA.get(i).getNombre());
+            }
+        }catch (Exception e){
+          JOptionPane.showMessageDialog(null, "Fallo bro");
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

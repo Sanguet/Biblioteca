@@ -91,13 +91,13 @@ public class BuscarLibro extends java.awt.Dialog {
         jPanel1.add(btmBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 90, 30));
 
         btmCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
-        btmCerrar.setText("Cerar");
+        btmCerrar.setText("Cerrar");
         btmCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btmCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 80, 30));
+        jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, 30));
 
         tfLibro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
