@@ -11,11 +11,9 @@ import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.*;
 import javax.swing.*;
 
 /**
@@ -193,19 +191,11 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
         dialogo2.setVisible(true);
-        AgregarPrestamo ap = new AgregarPrestamo();
-        VentanaPrincipalInicio.Escritorio.add(ap);
-        ap.show();
-        ap.moveToFront();
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
         dialogo2.setVisible(true);
-        BuscarPrestamo bp = new BuscarPrestamo();
-        VentanaPrincipalInicio.Escritorio.add(bp);
-        bp.show();
-        bp.moveToFront();
     }//GEN-LAST:event_jbBuscarActionPerformed
     public void mostrarLista(List<Prestamo> lista){
         try{
