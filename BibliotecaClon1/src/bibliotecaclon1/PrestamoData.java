@@ -190,11 +190,11 @@ public class PrestamoData {
     List <Prestamo> prestamosDelLibro = new ArrayList<Prestamo>();
         
         try {
-            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%pepe%\" AND l.nombre LIKE \"%rosa%\";";
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE ? AND l.nombre LIKE ?;";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, alumno);
-            stmt.setString(2, libro);
+            stmt.setString(1,"%" + alumno + "%");
+            stmt.setString(2,"%" + libro + "%" );
             //stmt.setString(1, "\""+ "%" + alumno + "%" +"\"");
             //stmt.setString(2, "\""+ "%" + libro + "%" +"\"");
             
@@ -211,7 +211,7 @@ public class PrestamoData {
             }
             stmt.close();
         } catch(SQLException ex){
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            System.out.println("Error al obtener los prestamos por: " + ex.getMessage());
         }
         return prestamosDelLibro;
     }

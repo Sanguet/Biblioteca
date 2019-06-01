@@ -129,7 +129,7 @@ public class LibroData {
         List <Libro> librosNombre = new ArrayList<Libro>();
         
         try {
-            String sql = "SELECT * FROM alumnos WHERE libros.nombre LIKE ?;";
+            String sql = "SELECT * FROM libros WHERE libros.nombre LIKE ?;";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, nombre);
             ResultSet rs = stmt.executeQuery();
@@ -155,7 +155,7 @@ public class LibroData {
         List <Libro> librosAutor = new ArrayList<Libro>();
         
         try {
-            String sql = "SELECT * FROM alumnos WHERE libros.autor LIKE ?;";
+            String sql = "SELECT * FROM libros WHERE libros.autor LIKE ?;";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, autor);
             ResultSet rs = stmt.executeQuery();
@@ -182,7 +182,7 @@ public class LibroData {
         List <Libro> librosCantidad = new ArrayList<Libro>();
         
         try {
-            String sql = "SELECT * FROM alumnos WHERE libros.cantidad LIKE ?;";
+            String sql = "SELECT * FROM libros WHERE libros.cantidad LIKE ?;";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, cantidad);
             ResultSet rs = stmt.executeQuery();
@@ -208,7 +208,7 @@ public class LibroData {
         List <Libro> librosGenero = new ArrayList<Libro>();
         
         try {
-            String sql = "SELECT * FROM alumnos WHERE libros.genero LIKE ?;";
+            String sql = "SELECT * FROM libros WHERE libros.genero LIKE ?;";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, genero);
             ResultSet rs = stmt.executeQuery();
@@ -246,5 +246,34 @@ public class LibroData {
             System.out.println("Error de " + e.getMessage());
         }
     }
+    
+    public List <Libro> obtenerLibrosPorNombreGeneroAutor(String nombre, String genero, String autor){
+        List <Libro> librosTodo = new ArrayList<Libro>();
+        
+        try {
+            String sql = "SELECT * FROM libros WHERE libros.nombre LIKE ? AND libros.genero LIKE ? AND libros.autor LIKE ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1,"%" + nombre + "%");
+            stmt.setString(2,"%" + genero + "%");
+            stmt.setString(3,"%" + autor + "%");
+            ResultSet rs = stmt.executeQuery();
+            Libro libro;
+            while (rs.next()){
+                libro = new Libro();
+                libro.setId(rs.getInt("id"));
+                libro.setNombre(rs.getString("nombre"));
+                libro.setCantidad(rs.getInt("cantidad"));
+                libro.setGenero(rs.getString("genero"));
+                libro.setAutor(rs.getString("autor"));
+                
+                librosTodo.add(libro);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
+        }
+        return librosTodo;
+    }
+    
     
 }

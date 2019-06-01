@@ -5,10 +5,13 @@
  */
 package Vistas;
 
+import static Vistas.ListaDeLibros.jScrollPane1;
+import static Vistas.ListaDeLibros.jtPrestamos;
 import static Vistas.ListaDePrestamos.jScrollPane1;
 import static Vistas.ListaDePrestamos.jtPrestamos;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import bibliotecaclon1.Libro;
 import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
@@ -44,10 +47,10 @@ public class BuscarLibro extends java.awt.Dialog {
         lbNombre = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         lbLibro = new javax.swing.JLabel();
-        tfLibro = new javax.swing.JTextField();
+        tfAutor = new javax.swing.JTextField();
         btmBuscar = new javax.swing.JButton();
         btmCerrar = new javax.swing.JButton();
-        tfLibro1 = new javax.swing.JTextField();
+        tfGenero = new javax.swing.JTextField();
         lbLibro1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -75,17 +78,17 @@ public class BuscarLibro extends java.awt.Dialog {
         lbLibro.setText("Autor:");
         jPanel1.add(lbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        tfLibro.addActionListener(new java.awt.event.ActionListener() {
+        tfAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLibroActionPerformed(evt);
+                tfAutorActionPerformed(evt);
             }
         });
-        tfLibro.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfAutor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfLibroKeyTyped(evt);
+                tfAutorKeyTyped(evt);
             }
         });
-        jPanel1.add(tfLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 227, 30));
+        jPanel1.add(tfAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 227, 30));
 
         btmBuscar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         btmBuscar.setText("Buscar");
@@ -105,17 +108,17 @@ public class BuscarLibro extends java.awt.Dialog {
         });
         jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, 30));
 
-        tfLibro1.addActionListener(new java.awt.event.ActionListener() {
+        tfGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLibro1ActionPerformed(evt);
+                tfGeneroActionPerformed(evt);
             }
         });
-        tfLibro1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfGenero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfLibro1KeyTyped(evt);
+                tfGeneroKeyTyped(evt);
             }
         });
-        jPanel1.add(tfLibro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 227, 30));
+        jPanel1.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 227, 30));
 
         lbLibro1.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         lbLibro1.setText("Genero:");
@@ -141,17 +144,19 @@ public class BuscarLibro extends java.awt.Dialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreActionPerformed
 
-    private void tfLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibroActionPerformed
+    private void tfAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAutorActionPerformed
 
-    }//GEN-LAST:event_tfLibroActionPerformed
+    }//GEN-LAST:event_tfAutorActionPerformed
 
     private void btmBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmBuscarActionPerformed
         // TODO add your handling code here:
         try {
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-            PrestamoData pd = new PrestamoData(con);
-            List<Prestamo> nuevaLista = pd.obtenerPrestamosByAlumnoByLibro(tfNombre.getText(), tfLibro.getText());
+            LibroData ld = new LibroData(con);
+            List<Libro> nuevaLista = ld.obtenerLibrosPorNombreGeneroAutor(tfNombre.getText(), tfGenero.getText(), tfAutor.getText());
             mostrarLista(nuevaLista);
+            JOptionPane.showMessageDialog(null, "Busqueda realizada con exito");
+            dispose();
 
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Fallo bro" );
@@ -165,51 +170,46 @@ public class BuscarLibro extends java.awt.Dialog {
         }
     }//GEN-LAST:event_btmCerrarActionPerformed
 
-    private void tfLibro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibro1ActionPerformed
+    private void tfGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfLibro1ActionPerformed
+    }//GEN-LAST:event_tfGeneroActionPerformed
 
-    private void tfLibro1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLibro1KeyTyped
+    private void tfGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfGeneroKeyTyped
         char c = evt.getKeyChar();
         if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
         evt.consume();
         }
-    }//GEN-LAST:event_tfLibro1KeyTyped
+    }//GEN-LAST:event_tfGeneroKeyTyped
 
-    private void tfLibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLibroKeyTyped
+    private void tfAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfAutorKeyTyped
         char c = evt.getKeyChar();
         if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
         evt.consume();
         }
-    }//GEN-LAST:event_tfLibroKeyTyped
-        public void mostrarLista(List<Prestamo> lista){
+    }//GEN-LAST:event_tfAutorKeyTyped
+        public void mostrarLista(List<Libro> lista){
         try{
-            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
             String matris[][] = new String[lista.size()][4];
-            AlumnoData ad = new AlumnoData(con);
-            LibroData ld = new LibroData(con);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             
             for (int i = 0; i < lista.size(); i++){
-                matris[i][0] = ad.getAlumnoById(lista.get(i).getIdAlumno()).getNombre();
-                matris[i][1] = ld.getLibroById(lista.get(i).getIdLibro()).getNombre();
-                matris[i][2] = sdf.format(lista.get(i).getFechaPrestamo());
-                matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
+                matris[i][0] = lista.get(i).getNombre();
+                matris[i][1] = Integer.toString(lista.get(i).getCantidad());
+                matris[i][2] = lista.get(i).getGenero();
+                matris[i][3] = lista.get(i).getAutor();
             }
             
-            ListaDePrestamos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            ListaDeLibros.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
-                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
+                "Libro", "Cantidad", "Genero", "Autor"
             }
             ));
-            jtPrestamos.setRowHeight(30);
-            jScrollPane1.setViewportView(jtPrestamos);
+            ListaDeLibros.jtPrestamos.setRowHeight(30);
+            ListaDeLibros.jScrollPane1.setViewportView(ListaDeLibros.jtPrestamos);
             
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No funciono bro");
-        }
-    }
+        }}
     /**
      * @param args the command line arguments
      */
@@ -236,8 +236,8 @@ public class BuscarLibro extends java.awt.Dialog {
     private javax.swing.JLabel lbLibro;
     private javax.swing.JLabel lbLibro1;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JTextField tfLibro;
-    private javax.swing.JTextField tfLibro1;
+    private javax.swing.JTextField tfAutor;
+    private javax.swing.JTextField tfGenero;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

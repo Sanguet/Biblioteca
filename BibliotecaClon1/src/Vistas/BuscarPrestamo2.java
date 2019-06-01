@@ -135,6 +135,8 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             PrestamoData pd = new PrestamoData(con);
             List<Prestamo> nuevaLista = pd.obtenerPrestamosByAlumnoByLibro(tfNombre.getText(), tfLibro.getText());
             mostrarLista(nuevaLista);
+            JOptionPane.showMessageDialog(null, "Busqueda realizada con exito");
+            dispose();
 
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Fallo bro" );
@@ -166,7 +168,6 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             jScrollPane1.setViewportView(jtPrestamos);
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No funciono bro123");
         }
     }
     

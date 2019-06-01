@@ -5,8 +5,11 @@
  */
 package Vistas;
 
+import static Vistas.ListaDeAlumnos.jScrollPane1;
+import static Vistas.ListaDeAlumnos.jtPrestamos;
 import static Vistas.ListaDePrestamos.jScrollPane1;
 import static Vistas.ListaDePrestamos.jtPrestamos;
+import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
 import bibliotecaclon1.LibroData;
@@ -44,7 +47,7 @@ public class BuscarAlumno extends java.awt.Dialog {
         lbNombre = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         lbLibro = new javax.swing.JLabel();
-        tfLibro = new javax.swing.JTextField();
+        tfEmail = new javax.swing.JTextField();
         btmBuscar = new javax.swing.JButton();
         btmCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -78,12 +81,12 @@ public class BuscarAlumno extends java.awt.Dialog {
         lbLibro.setText("Email:");
         jPanel1.add(lbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        tfLibro.addActionListener(new java.awt.event.ActionListener() {
+        tfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLibroActionPerformed(evt);
+                tfEmailActionPerformed(evt);
             }
         });
-        jPanel1.add(tfLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 227, 30));
+        jPanel1.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 227, 30));
 
         btmBuscar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         btmBuscar.setText("Buscar");
@@ -123,17 +126,19 @@ public class BuscarAlumno extends java.awt.Dialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreActionPerformed
 
-    private void tfLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibroActionPerformed
+    private void tfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfLibroActionPerformed
+    }//GEN-LAST:event_tfEmailActionPerformed
 
     private void btmBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmBuscarActionPerformed
         // TODO add your handling code here:
         try {
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-            PrestamoData pd = new PrestamoData(con);
-            List<Prestamo> nuevaLista = pd.obtenerPrestamosByAlumnoByLibro(tfNombre.getText(), tfLibro.getText());
+            AlumnoData ad = new AlumnoData(con);
+            List<Alumno> nuevaLista = ad.obtenerAlumnosPorNombreAndEmial(tfNombre.getText(), tfEmail.getText());
             mostrarLista(nuevaLista);
+            JOptionPane.showMessageDialog(null, "Busqueda realizada con exito");
+            dispose();
 
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Fallo bro" );
@@ -156,27 +161,23 @@ public class BuscarAlumno extends java.awt.Dialog {
 // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreKeyTyped
 
-    public void mostrarLista(List<Prestamo> lista){
+    public void mostrarLista(List<Alumno> lista){
         try{
-            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-            String matris[][] = new String[lista.size()][4];
-            AlumnoData ad = new AlumnoData(con);
-            LibroData ld = new LibroData(con);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String matris[][] = new String[lista.size()][2];
             
             for (int i = 0; i < lista.size(); i++){
-                matris[i][0] = ad.getAlumnoById(lista.get(i).getIdAlumno()).getNombre();
-                matris[i][1] = ld.getLibroById(lista.get(i).getIdLibro()).getNombre();
+                matris[i][0] = lista.get(i).getNombre();
+                matris[i][1] = lista.get(i).getEmail();
             }
             
             ListaDeAlumnos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
-                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
+                "Alumno", "Libro"
             }
             ));
-            jtPrestamos.setRowHeight(30);
-            jScrollPane1.setViewportView(jtPrestamos);
+            ListaDeAlumnos.jtPrestamos.setRowHeight(30);
+            ListaDeAlumnos.jScrollPane1.setViewportView(ListaDeAlumnos.jtPrestamos);
             
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No funciono bro");
@@ -208,7 +209,7 @@ public class BuscarAlumno extends java.awt.Dialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbLibro;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JTextField tfLibro;
+    private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

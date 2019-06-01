@@ -210,5 +210,30 @@ public class AlumnoData {
             System.out.println("Error al listar alumnos: " + e.getMessage());
         }
     }
+        
+        public List <Alumno> obtenerAlumnosPorNombreAndEmial(String nombre, String email){
+    List <Alumno> alumnos = new ArrayList<Alumno>();
+        
+        try {
+            String sql = "SELECT * FROM alumnos WHERE alumnos.nombre LIKE ? AND alumnos.email LIKE ?;";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, "%" + nombre + "%" );
+            stmt.setString(2,"%" + email + "%" );
+            ResultSet rs = stmt.executeQuery();
+            Alumno alumno;
+            while (rs.next()){
+                alumno = new Alumno();
+                alumno.setId(rs.getInt("id"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setEmail(rs.getString("email"));
+                
+                alumnos.add(alumno);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return alumnos;
+    } 
 
 }
