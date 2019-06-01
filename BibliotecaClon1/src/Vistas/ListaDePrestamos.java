@@ -57,11 +57,17 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         jbBuscar = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         button1.setLabel("button1");
 
-        jlAListaPrestamos.setText("Lista de Préstamos");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jlAListaPrestamos.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
+        jlAListaPrestamos.setText(" Lista de Préstamos");
+        getContentPane().add(jlAListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 390, -1));
+
+        jtPrestamos.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -84,12 +90,16 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         jtPrestamos.setRowHeight(30);
         jScrollPane1.setViewportView(jtPrestamos);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 670, 400));
+
+        jbCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jbCerrar.setText("Cerrar");
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
 
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +107,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
 
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +115,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 jbAgregarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 20, 80, -1));
 
         jbBorrar.setText("Borrar");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,45 +123,10 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
                 jbBorrarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbCerrar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlAListaPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(152, 152, 152)
-                                .addComponent(jbBuscar)
-                                .addGap(36, 36, 36)
-                                .addComponent(jbAgregar)
-                                .addGap(35, 35, 35)
-                                .addComponent(jbBorrar)))))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbBuscar)
-                    .addComponent(jbAgregar)
-                    .addComponent(jbBorrar)
-                    .addComponent(jlAListaPrestamos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jbCerrar)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 690, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,6 +187,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
+    private javax.swing.JLabel jLabel1;
     public static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbBorrar;
