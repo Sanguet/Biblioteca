@@ -16,19 +16,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author santi
  */
-public class BuscarPrestamo2 extends java.awt.Dialog {
+public class BuscarAlumno extends java.awt.Dialog {
 
     /**
-     * Creates new form BuscarPrestamo2
+     * Creates new form BuscarAlumno
      */
-    public BuscarPrestamo2(java.awt.Frame parent, boolean modal) {
+    public BuscarAlumno(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents(); 
+        initComponents();
         this.setBounds(680, 270, 450, 292);
     }
 
@@ -70,7 +69,7 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         jPanel1.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 227, 30));
 
         lbLibro.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
-        lbLibro.setText("Libro:");
+        lbLibro.setText("Email:");
         jPanel1.add(lbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         tfLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +134,13 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         }
     }//GEN-LAST:event_btmBuscarActionPerformed
 
+    private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
+        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
+        if(JOptionPane.YES_OPTION == msj){
+            dispose();
+        }
+    }//GEN-LAST:event_btmCerrarActionPerformed
+
     public void mostrarLista(List<Prestamo> lista){
         try{
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
@@ -146,11 +152,9 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             for (int i = 0; i < lista.size(); i++){
                 matris[i][0] = ad.getAlumnoById(lista.get(i).getIdAlumno()).getNombre();
                 matris[i][1] = ld.getLibroById(lista.get(i).getIdLibro()).getNombre();
-                matris[i][2] = sdf.format(lista.get(i).getFechaPrestamo());
-                matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
             }
             
-            ListaDePrestamos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            ListaDeAlumnos.jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             matris,
             new String [] {
                 "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
@@ -164,20 +168,13 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         }
     }
     
-    private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
-        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
-        if(JOptionPane.YES_OPTION == msj){
-            dispose();
-        }
-    }//GEN-LAST:event_btmCerrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                BuscarPrestamo2 dialog = new BuscarPrestamo2(new java.awt.Frame(), true);
+                BuscarAlumno dialog = new BuscarAlumno(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);

@@ -16,19 +16,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author santi
  */
-public class BuscarPrestamo2 extends java.awt.Dialog {
+public class BuscarLibro extends java.awt.Dialog {
 
     /**
-     * Creates new form BuscarPrestamo2
+     * Creates new form BuscarLibro
      */
-    public BuscarPrestamo2(java.awt.Frame parent, boolean modal) {
+    public BuscarLibro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents(); 
+        initComponents();
         this.setBounds(680, 270, 450, 292);
     }
 
@@ -47,6 +46,8 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         tfLibro = new javax.swing.JTextField();
         btmBuscar = new javax.swing.JButton();
         btmCerrar = new javax.swing.JButton();
+        tfLibro1 = new javax.swing.JTextField();
+        lbLibro1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -59,26 +60,26 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbNombre.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
-        lbNombre.setText("Nombre:");
-        jPanel1.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 40));
+        lbNombre.setText("Libro:");
+        jPanel1.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, 40));
 
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 227, 30));
+        jPanel1.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 227, 30));
 
         lbLibro.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
-        lbLibro.setText("Libro:");
-        jPanel1.add(lbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        lbLibro.setText("Autor:");
+        jPanel1.add(lbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         tfLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLibroActionPerformed(evt);
             }
         });
-        jPanel1.add(tfLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 227, 30));
+        jPanel1.add(tfLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 227, 30));
 
         btmBuscar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         btmBuscar.setText("Buscar");
@@ -87,7 +88,7 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
                 btmBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btmBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 90, 30));
+        jPanel1.add(btmBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 90, 30));
 
         btmCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         btmCerrar.setText("Cerar");
@@ -96,7 +97,18 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
                 btmCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 80, 30));
+        jPanel1.add(btmCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 80, 30));
+
+        tfLibro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLibro1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfLibro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 227, 30));
+
+        lbLibro1.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
+        lbLibro1.setText("Genero:");
+        jPanel1.add(lbLibro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 300));
@@ -135,7 +147,17 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         }
     }//GEN-LAST:event_btmBuscarActionPerformed
 
-    public void mostrarLista(List<Prestamo> lista){
+    private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
+        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
+        if(JOptionPane.YES_OPTION == msj){
+            dispose();
+        }
+    }//GEN-LAST:event_btmCerrarActionPerformed
+
+    private void tfLibro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLibro1ActionPerformed
+        public void mostrarLista(List<Prestamo> lista){
         try{
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
             String matris[][] = new String[lista.size()][4];
@@ -163,21 +185,13 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             JOptionPane.showMessageDialog(null, "No funciono bro");
         }
     }
-    
-    private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
-        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
-        if(JOptionPane.YES_OPTION == msj){
-            dispose();
-        }
-    }//GEN-LAST:event_btmCerrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                BuscarPrestamo2 dialog = new BuscarPrestamo2(new java.awt.Frame(), true);
+                BuscarLibro dialog = new BuscarLibro(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -195,8 +209,10 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbLibro;
+    private javax.swing.JLabel lbLibro1;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JTextField tfLibro;
+    private javax.swing.JTextField tfLibro1;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

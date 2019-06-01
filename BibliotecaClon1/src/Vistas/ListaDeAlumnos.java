@@ -141,7 +141,7 @@ public class ListaDeAlumnos extends java.awt.Dialog {
     }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        BuscarPrestamo2 dialog = new BuscarPrestamo2(new java.awt.Frame(), true);
+        BuscarAlumno dialog = new BuscarAlumno(new java.awt.Frame(), true);
         dialog.setVisible(true);
     }//GEN-LAST:event_jbBuscarActionPerformed
 
