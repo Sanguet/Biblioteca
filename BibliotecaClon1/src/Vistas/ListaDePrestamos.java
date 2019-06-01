@@ -65,7 +65,7 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
 
         jlAListaPrestamos.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
         jlAListaPrestamos.setText(" Lista de Préstamos");
-        getContentPane().add(jlAListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 390, -1));
+        getContentPane().add(jlAListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 390, -1));
 
         jtPrestamos.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
         jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,32 +101,32 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
 
-        jbBuscar.setText("Buscar");
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5-02.png"))); // NOI18N
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+        getContentPane().add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 30, -1));
 
-        jbAgregar.setText("Agregar");
+        jbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5_Mesa de trabajo 1.png"))); // NOI18N
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 20, 80, -1));
+        getContentPane().add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 30, -1));
 
-        jbBorrar.setText("Borrar");
+        jbBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5-03.png"))); // NOI18N
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBorrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+        getContentPane().add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 30, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 690, 620));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 690, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

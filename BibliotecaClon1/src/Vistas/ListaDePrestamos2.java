@@ -5,6 +5,18 @@
  */
 package Vistas;
 
+import bibliotecaclon1.AlumnoData;
+import bibliotecaclon1.Conexion;
+import bibliotecaclon1.LibroData;
+import bibliotecaclon1.Prestamo;
+import bibliotecaclon1.PrestamoData;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+
+
 /**
  *
  * @author santi
@@ -17,6 +29,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
     public ListaDePrestamos2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setBounds(550, 142, 700, 600);
     }
 
     /**
@@ -28,12 +41,89 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jlAListaPrestamos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtPrestamos = new javax.swing.JTable();
+        jbCerrar = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
+        jbAgregar = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
         });
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlAListaPrestamos.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
+        jlAListaPrestamos.setText(" Lista de Préstamos");
+        jPanel1.add(jlAListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 390, -1));
+
+        jtPrestamos.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
+        jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jtPrestamos.setRowHeight(30);
+        jScrollPane1.setViewportView(jtPrestamos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 680, 440));
+
+        jbCerrar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
+        jbCerrar.setText("Cerrar");
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, -1, -1));
+
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5-02.png"))); // NOI18N
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 30, -1));
+
+        jbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5_Mesa de trabajo 1.png"))); // NOI18N
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 30, -1));
+
+        jbBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5x5-03.png"))); // NOI18N
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
+
         add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -46,6 +136,33 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
+
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbCerrarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        BuscarPrestamo2 dialog = new BuscarPrestamo2(new java.awt.Frame(), true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        AgregarLibro3 dialog = new AgregarLibro3(new java.awt.Frame(), true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jbAgregarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
+        try{
+            if (jtPrestamos.getSelectedRow() != 1){
+                dtm.removeRow(jtPrestamos.getSelectedRow());
+            } else {
+                JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
+            }
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
+        }
+    }//GEN-LAST:event_jbBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -66,6 +183,14 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    public static javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbAgregar;
+    private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbCerrar;
+    private javax.swing.JLabel jlAListaPrestamos;
+    public static javax.swing.JTable jtPrestamos;
     // End of variables declaration//GEN-END:variables
 }
