@@ -139,7 +139,7 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             dispose();
 
         } catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Fallo bro" );
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en la lista, vuelve a intentar mas tarde" );
         }
     }//GEN-LAST:event_btmBuscarActionPerformed
 
@@ -172,7 +172,7 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
     }
     
     private void btmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmCerrarActionPerformed
-        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
+        int msj = JOptionPane.showConfirmDialog(null,"¿Estas seguro de querer cerrar esta ventana?");
         if(JOptionPane.YES_OPTION == msj){
             dispose();
         }

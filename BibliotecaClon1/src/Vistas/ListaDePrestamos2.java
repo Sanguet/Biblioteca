@@ -5,8 +5,6 @@
  */
 package Vistas;
 
-import static Vistas.ListaDePrestamos.jScrollPane1;
-import static Vistas.ListaDePrestamos.jtPrestamos;
 import bibliotecaclon1.Alumno;
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
@@ -18,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
 
 
 /**
@@ -43,7 +40,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
             
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla por: " + e.getMessage());
         }
     }
 
@@ -183,27 +180,30 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
-        DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
-        try{
-            if (jtPrestamos.getSelectedRow() != 1){
-                DefaultTableModel tm = (DefaultTableModel) jtPrestamos.getModel();
-                String nombreAlumno =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),0));
-                String nombreLibro =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),1));
-                Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-                PrestamoData pd = new PrestamoData(con);
-                AlumnoData ad = new AlumnoData(con);
-                LibroData ld = new LibroData(con);
+        int msj = JOptionPane.showConfirmDialog(null,"¿Estas seguro de querer borrar este prestamo?");
+        if(JOptionPane.YES_OPTION == msj){
+            DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
+            try{
+                if (jtPrestamos.getSelectedRow() != 1){
+                    DefaultTableModel tm = (DefaultTableModel) jtPrestamos.getModel();
+                    String nombreAlumno =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),0));
+                    String nombreLibro =String.valueOf(tm.getValueAt(jtPrestamos.getSelectedRow(),1));
+                    Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+                    PrestamoData pd = new PrestamoData(con);
+                    AlumnoData ad = new AlumnoData(con);
+                    LibroData ld = new LibroData(con);
                 //
-                Alumno alumno = ad.getAlumnoByName(nombreAlumno);
-                Libro libro = ld.getLibroByName(nombreLibro);
-                Prestamo prestamoBorrar = pd.obtenerPrestamoPorLibroAndAlumno(alumno, libro);
-                pd.borrarPrestamo(prestamoBorrar);
-                dtm.removeRow(jtPrestamos.getSelectedRow());
-            } else {
+                    Alumno alumno = ad.getAlumnoByName(nombreAlumno);
+                    Libro libro = ld.getLibroByName(nombreLibro);
+                    Prestamo prestamoBorrar = pd.obtenerPrestamoPorLibroAndAlumno(alumno, libro);
+                    pd.borrarPrestamo(prestamoBorrar);
+                    dtm.removeRow(jtPrestamos.getSelectedRow());
+                } else {
+                    JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
+                }
+            } catch (Exception ex){
                 JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
             }
-        } catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
@@ -217,7 +217,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
             mostrarLista(lista);
 
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla por: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -246,7 +246,7 @@ public class ListaDePrestamos2 extends java.awt.Dialog {
             jScrollPane1.setViewportView(jtPrestamos);
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No funciono bro");
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en la lista: ");
         }
     }
     

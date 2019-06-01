@@ -45,7 +45,7 @@ public class AgregarPrestamo2 extends java.awt.Dialog {
             }
             
         }catch (Exception e){
-          JOptionPane.showMessageDialog(null, "Fallo bro");
+          JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, vuelve a intentar");
         }
     }
     
@@ -58,7 +58,7 @@ public class AgregarPrestamo2 extends java.awt.Dialog {
                 jcbLibro.addItem(listA.get(i).getNombre());
             }
         }catch (Exception e){
-          JOptionPane.showMessageDialog(null, "Fallo bro");
+          JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, vuelve a intentar");
         }
     }
     
@@ -197,7 +197,7 @@ public class AgregarPrestamo2 extends java.awt.Dialog {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
-        int msj = JOptionPane.showConfirmDialog(null,"Estas seguro de querer cerrar esta ventana?");
+        int msj = JOptionPane.showConfirmDialog(null,"¿Estas seguro de querer cerrar esta ventana?");
         if(JOptionPane.YES_OPTION == msj){
             dispose();
         }

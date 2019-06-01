@@ -208,6 +208,8 @@ public class ListaDeLibros extends java.awt.Dialog {
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        int msj = JOptionPane.showConfirmDialog(null,"¿Estas seguro de querer cerrar esta ventana?");
+        if(JOptionPane.YES_OPTION == msj){
         DefaultTableModel dtm = (DefaultTableModel) jtPrestamos.getModel();
         try{
             if (jtPrestamos.getSelectedRow() != 1){
@@ -224,6 +226,7 @@ public class ListaDeLibros extends java.awt.Dialog {
             }
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
+        }
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
