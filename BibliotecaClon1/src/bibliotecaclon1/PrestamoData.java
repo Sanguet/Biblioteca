@@ -159,9 +159,49 @@ public class PrestamoData {
         return prestamosDelLibro;
     }
     
-    //asd
-     public List <String> obtenerPrestamosNombre(Conexion con){
-    List <String> prestamosConNombre = new ArrayList<String>();
+    public List <Prestamo> obtenerPrestamosByAlumnoByLibro(String alumno, String libro){
+    List <Prestamo> prestamosDelLibro = new ArrayList<Prestamo>();
+        
+        try {
+            String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id AND a.nombre LIKE \"%?%\" AND l.nombre LIKE \"%?%\"";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, alumno);
+            stmt.setString(2, libro);
+            
+            ResultSet rs = stmt.executeQuery();
+            Prestamo prestamo;
+            while (rs.next()){
+                prestamo = new Prestamo();
+                prestamo.setIdAlumno(rs.getInt("alumno"));
+                prestamo.setIdLibro(rs.getInt("libro"));
+                prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo"));
+                prestamo.setFechaDevolucion(rs.getDate("fechaDevolucion"));
+                
+                prestamosDelLibro.add(prestamo);
+            }
+            stmt.close();
+        } catch(SQLException ex){
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return prestamosDelLibro;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Borrar despues
+     public ArrayList <String> obtenerPrestamosNombre(Conexion con){
+    ArrayList <String> prestamosConNombre = new ArrayList<String>();
         
         try {
             String sql = "SELECT a.id as alumno, l.id as libro, p.fechaPrestamo, p.fechaDevolucion FROM prestamo p, alumnos a, libros l WHERE p.idAlumno = a.id AND p.idLibro = l.id";

@@ -7,6 +7,10 @@ package Vistas;
 
 import bibliotecaclon1.AlumnoData;
 import bibliotecaclon1.Conexion;
+import bibliotecaclon1.LibroData;
+import bibliotecaclon1.Prestamo;
+import bibliotecaclon1.PrestamoData;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -159,19 +163,17 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
 
     
     private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
-        /* MODO PRUEBA
         try{
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
-            AlumnoData ad = new AlumnoData(con);
-            //ArrayList<String> lista = ad.getPrestamosNombres(con);
+            PrestamoData pd = new PrestamoData(con);
+            List<Prestamo> lista = pd.obtenerPrestamos();
             
-            //mostrarLista(lista);
+            mostrarLista(lista);
             
             
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla por: " + e.getMessage());
         }
-        */
     }//GEN-LAST:event_jbMostrarActionPerformed
     
     
@@ -191,46 +193,48 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
         dialogo2.setVisible(true);
-        /*AgregarPrestamo ap = new AgregarPrestamo();
+        AgregarPrestamo ap = new AgregarPrestamo();
         VentanaPrincipalInicio.Escritorio.add(ap);
         ap.show();
-        ap.moveToFront(); */
+        ap.moveToFront();
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
         dialogo2.setVisible(true);
-        /*BuscarPrestamo bp = new BuscarPrestamo();
+        BuscarPrestamo bp = new BuscarPrestamo();
         VentanaPrincipalInicio.Escritorio.add(bp);
         bp.show();
-        bp.moveToFront();*/
+        bp.moveToFront();
     }//GEN-LAST:event_jbBuscarActionPerformed
-    /* MODO PRUEBA
-    public void mostrarLista(ArrayList<String> lista){
-        String matris[][] = new String[lista.size()][4];
-        
-        for (int i = 0; i < lista.size(); i++){
-            matris[i][0] = lista.get(i);
-            matris[i][1] = lista.get(i);
-            matris[i][2] = lista.get(i);
-            matris[i][3] = lista.get(i);
-        }
-        
-        jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+    public void mostrarLista(List<Prestamo> lista){
+        try{
+            Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
+            String matris[][] = new String[lista.size()][4];
+            AlumnoData ad = new AlumnoData(con);
+            LibroData ld = new LibroData(con);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            for (int i = 0; i < lista.size(); i++){
+                matris[i][0] = ad.getAlumnoById(lista.get(i).getIdAlumno()).getNombre();
+                matris[i][1] = ld.getLibroById(lista.get(i).getIdLibro()).getNombre();
+                matris[i][2] = sdf.format(lista.get(i).getFechaPrestamo());
+                matris[i][3] = sdf.format(lista.get(i).getFechaDevolucion());
+            }
+            
+            jtPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            matris,
             new String [] {
                 "Alumno", "Libro", "Fecha de prestamo", "Fecha de devolucion"
             }
-        ));
-        jtPrestamos.setRowHeight(30);
-        jScrollPane1.setViewportView(jtPrestamos);
+            ));
+            jtPrestamos.setRowHeight(30);
+            jScrollPane1.setViewportView(jtPrestamos);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No funciono bro");
+        }
     }
-    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JScrollPane jScrollPane1;
