@@ -12,6 +12,7 @@ import bibliotecaclon1.Conexion;
 import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
+import com.sun.glass.events.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -65,6 +66,11 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfNombreActionPerformed(evt);
+            }
+        });
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNombreKeyTyped(evt);
             }
         });
         jPanel1.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 227, 30));
@@ -170,6 +176,13 @@ public class BuscarPrestamo2 extends java.awt.Dialog {
             dispose();
         }
     }//GEN-LAST:event_btmCerrarActionPerformed
+
+    private void tfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfNombreKeyTyped
 
     /**
      * @param args the command line arguments

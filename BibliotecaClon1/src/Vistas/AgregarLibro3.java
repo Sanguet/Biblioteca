@@ -128,6 +128,11 @@ public class AgregarLibro3 extends java.awt.Dialog {
                 tfCantidadFocusLost(evt);
             }
         });
+        tfCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCantidadActionPerformed(evt);
+            }
+        });
         tfCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfCantidadKeyTyped(evt);
@@ -310,6 +315,10 @@ public class AgregarLibro3 extends java.awt.Dialog {
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_jbCerrarActionPerformed
+
+    private void tfCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCantidadActionPerformed
 
     /**
      * @param args the command line arguments

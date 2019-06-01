@@ -35,6 +35,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         JBSalir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
         JBInicio = new javax.swing.JButton();
 
@@ -44,11 +45,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
         jLabel1.setText("¡Bienvenido a Book Shelves! ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Harlow Solid Italic", 0, 24)); // NOI18N
         jLabel2.setText("Presiona cualquier tecla para ingresar");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -79,6 +80,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(JBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 30, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconos-03.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/light-violet-color-wallpaper-4.jpg"))); // NOI18N
         jLabelFondo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -182,6 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

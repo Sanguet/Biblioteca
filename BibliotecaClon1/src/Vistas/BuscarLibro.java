@@ -12,6 +12,7 @@ import bibliotecaclon1.Conexion;
 import bibliotecaclon1.LibroData;
 import bibliotecaclon1.Prestamo;
 import bibliotecaclon1.PrestamoData;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -79,6 +80,11 @@ public class BuscarLibro extends java.awt.Dialog {
                 tfLibroActionPerformed(evt);
             }
         });
+        tfLibro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfLibroKeyTyped(evt);
+            }
+        });
         jPanel1.add(tfLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 227, 30));
 
         btmBuscar.setFont(new java.awt.Font("MV Boli", 0, 18)); // NOI18N
@@ -102,6 +108,11 @@ public class BuscarLibro extends java.awt.Dialog {
         tfLibro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLibro1ActionPerformed(evt);
+            }
+        });
+        tfLibro1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfLibro1KeyTyped(evt);
             }
         });
         jPanel1.add(tfLibro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 227, 30));
@@ -131,7 +142,7 @@ public class BuscarLibro extends java.awt.Dialog {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void tfLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibroActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tfLibroActionPerformed
 
     private void btmBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmBuscarActionPerformed
@@ -157,6 +168,20 @@ public class BuscarLibro extends java.awt.Dialog {
     private void tfLibro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLibro1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfLibro1ActionPerformed
+
+    private void tfLibro1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLibro1KeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfLibro1KeyTyped
+
+    private void tfLibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLibroKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c != KeyEvent.VK_SPACE)){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfLibroKeyTyped
         public void mostrarLista(List<Prestamo> lista){
         try{
             Conexion con = new Conexion("jdbc:mysql://localhost/biblioteca","root","");
