@@ -160,9 +160,7 @@ public class VentanaPrincipalInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-            AgregarAlumno aa = new AgregarAlumno();
-            Escritorio.add(aa);
-            aa.show();
+            new AgregarAlumno2(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

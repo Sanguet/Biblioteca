@@ -181,25 +181,29 @@ public class ListaDePrestamos extends javax.swing.JInternalFrame {
         if (jtPrestamos.getSelectedRow() != 1){
             dtm.removeRow(jtPrestamos.getSelectedRow());
         } else {
-            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo por");
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
         }
         } catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo por");
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningun prestamo");
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
     
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-        AgregarPrestamo ap = new AgregarPrestamo();
+        JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
+        dialogo2.setVisible(true);
+        /*AgregarPrestamo ap = new AgregarPrestamo();
         VentanaPrincipalInicio.Escritorio.add(ap);
         ap.show();
-        ap.moveToFront();
+        ap.moveToFront(); */
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        BuscarPrestamo bp = new BuscarPrestamo();
+        JDialog dialogo2 = new JDialog(new VentanaPrincipalInicio(), true);
+        dialogo2.setVisible(true);
+        /*BuscarPrestamo bp = new BuscarPrestamo();
         VentanaPrincipalInicio.Escritorio.add(bp);
         bp.show();
-        bp.moveToFront();
+        bp.moveToFront();*/
     }//GEN-LAST:event_jbBuscarActionPerformed
     /* MODO PRUEBA
     public void mostrarLista(ArrayList<String> lista){
